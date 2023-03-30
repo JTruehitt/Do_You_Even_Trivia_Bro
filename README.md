@@ -31,11 +31,19 @@ Add more specific category APIs - TBD
 ## Rough Breakdown of Tasks
 
 Landing Page Layout - HTML, CSS, Javascript
+
 Question Type 1 - Mutliple Choice (text) - HTML, CSS, Javascript
+
 Fetch trivia facts from API #1 - Javascript
+
 Fetch trivia facts from API #2 - Javascript
+
 High Score Board - HTML, CSS, Javascript
+
 Question Type 2 - Multiple Choice (images)
+
 Question Type 3 - Short Answer
+
 Question Type 4 - Play Audio? Then multiple choice
+
 Question Type 5 - Play Video? Then multiple choice
