@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <!-- need to change title once we come up with a name -->
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <!-- ! this entire div was just to test the api call and function. see the following notes -->
+    <!-- all of the below except for div class trivia display will move to the main page -->
+    <!-- values for category checkboxes will need to confirm to the documentation so the fetch will process correctly. -->
+    <!-- category values are: arts_and_literature, film_and_tv, food_and_drink, general_knowledge, geography, history, music, science, society_and_culture, sport_and_leisure -->
+    <div>
+        <h2>Connection Test</h2>
+            <label for="categor1"></label><input
+              type="checkbox"
+              name="categories"
+              id="categor1"
+              value="any"
+            />all</label>
+            <label for="categor2"></label><input
+              type="checkbox"
+              name="categories"
+              id="categor2"
+              value="food_and_drink"
+            />food</label>
+            <label for="categor3"></label><input
+              type="checkbox"
+              name="categories"
+              id="categor3"
+              value="geography"
+            />geo</label>
+  
+          <select name="difficulty" id="difficulty">
+            <option value="any" selected>any</option>
+            <option value="easy">easy</option>
+            <option value="medium">med</option>
+            <option value="hard">hard</option>
+          </select>
+  
+          <button class="startGameBtn">Start Game</button>
+          <div class="triviaDisplay"></div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="quiz_page.js"></script>
+</body>
+</html>
