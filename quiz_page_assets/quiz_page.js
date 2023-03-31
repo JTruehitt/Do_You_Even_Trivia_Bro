@@ -98,16 +98,20 @@ function shuffleAnswers(answers) {
 function checkAnswer(userAnswer) {
   if (userAnswer === correctAnswer) {
     //! Replace this alert with something
-    alert("yay, that's right");
+    // alert("yay, that's right");
+    pickQuery(0);
     // userScore += //need to figure out scoring mechanic
   } else {
     //! Replace this alert with something
-    alert("sorry, that's wrong");
+    // alert("sorry, that's wrong");
+    pickQuery(1);
     // userScore -= //need to figure out scoring mechanic
   }
 
   questionsAnswered++;
-  renderNextQuestion(questionBank, questionsAnswered);
+  setTimeout(function () {
+    renderNextQuestion(questionBank, questionsAnswered);
+  }, 3000);
 }
 
 // function that triggers end game and redirects to next screen
@@ -134,7 +138,7 @@ $(".startGameBtn").click(() => {
   });
   let difficulty = $("#difficulty").val();
 
-  //! line 138 is just a placeholder until we figure out a number slider or something
+  //! line 141 is just a placeholder until we figure out a number slider or something
   //  let number = "&limit=" + $("#number").val();
   let number = "&limit=5";
 
@@ -142,3 +146,51 @@ $(".startGameBtn").click(() => {
 
   queryTAPI(userSelections);
 });
+
+// GIPHY FUNCTIONS -------------------------------------------
+
+// receives query phrase from pickQuery and sends request to API
+// handles response and passes data and query phrase to renderGifs
+function queryGiphy(query) {
+  let apiKey = "api_key=axJ1DtkLXB8rYsm7KvxDxCwLhNlzccGq";
+  let baseURL = "https://api.giphy.com/v1/gifs/search?";
+  let rating = "&rating=pg-13";
+
+  fetch(baseURL + apiKey + rating + "&q=" + query)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      renderGifs(data, query);
+    });
+}
+
+// creates gif and verbal affirmation elements
+// randomly selects gif url from api response and sets as src for created img
+// reformats original query and renders this along with gif to page
+function renderGifs(data, query) {
+  let gif = $("<img>");
+  let affirmation = $("<h2>");
+  let i = Math.floor(Math.random() * data.data.length);
+  console.log(i);
+  let gifURL = data.data[i].images.original.url;
+  gif.attr("src", gifURL);
+  gif.addClass("gifIMG");
+  affirmation.text(query.toUpperCase().split("-").join(" "));
+  triviaDisplay.append(affirmation, gif);
+}
+
+// function is called after answer is determined to be correct or incorrect
+// random word from predefined arrays is selected and fed into the queryGiphy function
+function pickQuery(result) {
+  // ! i just came up with these for a bit of diversity. we can change/add more if we like
+  const correct = ["correct", "yes", "way-to-go", "good-job"];
+  const incorrect = ["wrong", "no", "no-way", "nope"];
+  let r = Math.floor(Math.random() * correct.length);
+  if (result === 0) {
+    query = correct[r];
+    queryGiphy(query);
+  } else {
+    query = incorrect[r];
+    queryGiphy(query);
+  }
+}
