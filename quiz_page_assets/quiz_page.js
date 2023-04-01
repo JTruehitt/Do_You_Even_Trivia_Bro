@@ -11,29 +11,35 @@ let userScore = 0;
 // main function that queriestAPI for questions
 // parses the user inputs to build the queryURL
 // handles the response, sets data as global variable questionBank to be referenced moving forward, passes data to renderNextQuestion function along with questionsAnswered count to keep track
-function queryTAPI(userSelections) {
-  let categoryQuery;
-  let difficultyQuery;
 
-  if (userSelections.categories == "any") {
-    categoryQuery = "";
-  } else if (userSelections.categories.length >= 1)
-    categoryQuery = "categories=" + userSelections.categories.join();
+function queryTAPI() {
+  //! LocalStorage Method-----------------
+  // let userSelections = JSON.parse(localStorage.getItem("userSelections"));
 
-  if (userSelections.difficulty == "any") {
-    difficultyQuery = "";
-  } else {
-    difficultyQuery = "&difficulty=" + userSelections.difficulty;
-  }
+  // if (userSelections.categories.length === 10) {
+  //   userSelections.categories = "";
+  // } else  {
+  //   userSelections.categories = "categories=" + userSelections.categories.join();
+  // }
+  // if (userSelections.difficulty == "any") {
+  //   userSelections.difficulty = "";
+  // }
 
-  let baseURL =
+  //! URL Method--------------------------
+  let userSelections = {};
+  userSelections.categories = location.search.split("?")[1];
+  userSelections.number = location.search.split("?")[2];
+  userSelections.difficulty = location.search.split("?")[3];
+  //!-------------------------------------
+
+  let queryURL =
     "https://the-trivia-api.com/api/questions?" +
-    categoryQuery +
+    userSelections.categories +
     userSelections.number +
     "&region=US" +
-    difficultyQuery;
+    userSelections.difficulty;
 
-  let queryURL = baseURL;
+  console.log(queryURL);
   fetch(queryURL)
     .then((res) => res.json())
     .then((data) => {
@@ -42,6 +48,39 @@ function queryTAPI(userSelections) {
       renderNextQuestion(data, questionsAnswered);
     });
 }
+//! OLD
+// function queryTAPI(userSelections) {
+//   let categoryQuery;
+//   let difficultyQuery;
+
+//   if (userSelections.categories == "any") {
+//     categoryQuery = "";
+//   } else if (userSelections.categories.length >= 1)
+//     categoryQuery = "categories=" + userSelections.categories.join();
+
+//   if (userSelections.difficulty == "any") {
+//     difficultyQuery = "";
+//   } else {
+//     difficultyQuery = "&difficulty=" + userSelections.difficulty;
+//   }
+
+//   let baseURL =
+//     "https://the-trivia-api.com/api/questions?" +
+//     categoryQuery +
+//     userSelections.number +
+//     "&region=US" +
+//     difficultyQuery;
+
+//   let queryURL = baseURL;
+//   fetch(queryURL)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       questionBank = data;
+//       console.log(data);
+//       renderNextQuestion(data, questionsAnswered);
+//     });
+// }
+//! OLD
 
 // function that renders current question to the page
 // first empties the display, and if # of questions answered = length of the question array, pushes to endgame
@@ -194,3 +233,42 @@ function pickQuery(result) {
     queryGiphy(query);
   }
 }
+
+function queryTAPI() {
+  //! LocalStorage Method-----------------
+  // let userSelections = JSON.parse(localStorage.getItem("userSelections"));
+
+  // if (userSelections.categories.length === 10) {
+  //   userSelections.categories = "";
+  // } else  {
+  //   userSelections.categories = "categories=" + userSelections.categories.join();
+  // }
+  // if (userSelections.difficulty == "any") {
+  //   userSelections.difficulty = "";
+  // }
+
+  //! URL Method--------------------------
+  let userSelections = {};
+  userSelections.categories = location.search.split("?")[1];
+  userSelections.number = location.search.split("?")[2];
+  userSelections.difficulty = location.search.split("?")[3];
+  //!-------------------------------------
+
+  let queryURL =
+    "https://the-trivia-api.com/api/questions?" +
+    userSelections.categories +
+    userSelections.number +
+    "&region=US" +
+    userSelections.difficulty;
+
+  console.log(queryURL);
+  fetch(queryURL)
+    .then((res) => res.json())
+    .then((data) => {
+      questionBank = data;
+      console.log(data);
+      renderNextQuestion(data, questionsAnswered);
+    });
+}
+
+queryTAPI();
