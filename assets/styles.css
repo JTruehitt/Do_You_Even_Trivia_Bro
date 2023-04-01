@@ -8,3 +8,44 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+  /* * MODAL / Intake Form CSS */
+
+  label {
+    display: block;
+  }
+  
+  .form-wrapper > * + * {
+    margin-block-start: 3em;
+  }
+  
+  .form-wrapper {
+    padding-inline: 4em;
+  }
+  
+  .checkbox-wrapper {
+    /* padding-inline: 4em; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .checkbox-wrapper > * {
+    min-inline-size: 25ch;
+  }
+  
+  .selectAllBtn {
+    margin-block-end: 1em;
+  }
+  .startBtnWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .modal {
+    max-inline-size: 60ch;
+  }
+
+   /* * MODAL / Intake Form CSS END */
