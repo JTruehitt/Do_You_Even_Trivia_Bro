@@ -2,11 +2,13 @@
 
 // setting global varibales
 let triviaDisplay = $(".triviaDisplay");
+let gameBoard = $(".gameBoard");
 let userAnswer;
 let correctAnswer;
 let questionsAnswered = 0;
 let questionBank;
 let userScore = 0;
+let userSelections = {};
 
 
 // main function that queriestAPI for questions
@@ -27,7 +29,7 @@ function queryTAPI() {
   // }
 
   //! URL Method--------------------------
-  let userSelections = {};
+  //let userSelections = {};
   userSelections.categories = location.search.split("?")[1];
   userSelections.number = location.search.split("?")[2];
   userSelections.difficulty = location.search.split("?")[3];
@@ -54,8 +56,39 @@ function queryTAPI() {
 //TrackingBoard length is determined by the number of questions
 //7 questions >> 24 tiles
 //20 questions >> 60 tiles
+function renderBoard() {
+
+let numberOfQuestions = userSelections.number.split("=")[1];
+let boardCategories = userSelections.categories.split("=")[1].split(",");
+
+if (numberOfQuestions == 10) {
+  //short board
+  console.log(numberOfQuestions);
+
+  
+
+  for (let i=0; i<boardCategories.length; i++) {
+    var tile = $("<div>");
+    tile.addClass(boardCategories[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    gameBoard.append(tile);
+    console.log("woohoo");
+  }
+  
+  
+}else if (numberOfQuestions == 20)
+{
+  //long board
+  
+}
+}
+//function to build the gameboard
+
+
+
 //Dynamically create the board tiles, insert into the <footer>
-{/* <div class="row">
+/* <div class="row">
         <div class="col s1 red">1</div>
         <div class="col s1 pink">2</div>
         <div class="col s1 purple">3</div>
@@ -68,7 +101,7 @@ function queryTAPI() {
         <div class="col s1 orange">10</div>
         <div class="col s1 red">11</div>
         <div class="col s1 pink">12</div>
-      </div> */}
+      </div> */
 
 //The type of categories picked from the modal determine the tiles shown in board
 //create color classes in CSS for each category
@@ -267,7 +300,7 @@ function pickQuery(result) {
   }
 }
 
-function queryTAPI() {
+//function queryTAPI() {
   //! LocalStorage Method-----------------
   // let userSelections = JSON.parse(localStorage.getItem("userSelections"));
 
@@ -281,27 +314,28 @@ function queryTAPI() {
   // }
 
   //! URL Method--------------------------
-  let userSelections = {};
-  userSelections.categories = location.search.split("?")[1];
-  userSelections.number = location.search.split("?")[2];
-  userSelections.difficulty = location.search.split("?")[3];
-  //!-------------------------------------
+  // let userSelections = {};
+  // userSelections.categories = location.search.split("?")[1];
+  // userSelections.number = location.search.split("?")[2];
+  // userSelections.difficulty = location.search.split("?")[3];
+  // //!-------------------------------------
 
-  let queryURL =
-    "https://the-trivia-api.com/api/questions?" +
-    userSelections.categories +
-    userSelections.number +
-    "&region=US" +
-    userSelections.difficulty;
+  // let queryURL =
+  //   "https://the-trivia-api.com/api/questions?" +
+  //   userSelections.categories +
+  //   userSelections.number +
+  //   "&region=US" +
+  //   userSelections.difficulty;
 
-  console.log(queryURL);
-  fetch(queryURL)
-    .then((res) => res.json())
-    .then((data) => {
-      questionBank = data;
-      console.log(data);
-      renderNextQuestion(data, questionsAnswered);
-    });
-}
+  // console.log(queryURL);
+  // fetch(queryURL)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     questionBank = data;
+  //     console.log(data);
+  //     renderNextQuestion(data, questionsAnswered);
+  //   });
+//}
 
 queryTAPI();
+renderBoard();
