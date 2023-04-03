@@ -65,22 +65,49 @@ if (numberOfQuestions == 10) {
   //short board
   console.log(numberOfQuestions);
 
-  
+  //create 24 element array repeating the board categories
+  var gameBoardArray = [];
+  while (gameBoardArray.length<24){
+    gameBoardArray = gameBoardArray.concat(boardCategories); 
+  }
+  gameBoardArray.length = 24;
+  console.log(gameBoardArray);
 
-  for (let i=0; i<boardCategories.length; i++) {
+  //create two rows of 12
+  var row1 = $("<div>");
+  var row2 = $("<div>");
+  row1.addClass("row");
+  row2.addClass("row");
+  gameBoard.append(row1);
+  gameBoard.append(row2);
+
+  //populate the first row
+  for (let i=0; i<12; i++) {
     var tile = $("<div>");
-    tile.addClass(boardCategories[i]);
+    tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
     tile.text("&&&");
-    gameBoard.append(tile);
+    row1.append(tile);
     console.log("woohoo");
   }
-  
+
+  //populate the second row
+  for (let i=12; i<24; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row2.append(tile);
+    console.log("woohoo");
+  }
   
 }else if (numberOfQuestions == 20)
 {
   //long board
   
+  //create five rows
+
+
 }
 }
 //function to build the gameboard
