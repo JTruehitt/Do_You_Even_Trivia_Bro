@@ -9,6 +9,10 @@ let questionsAnswered = 0;
 let questionBank;
 let userScore = 0;
 let userSelections = {};
+let gameBoardText = [];
+let playerOnePosition=3;
+
+let categoryDictionary = {"Arts and Literature": "arts_and_literature", "Film and TV":"film_and_tv", "Food and Drink":"food_and_drink", "General Knowledge":"general_knowledge", "Geography":"geography", "History":"history", "Music":"music", "Science":"science", "Society and Culture":"society_and_culture", "Sport and Leisure":"sport_and_leisure"};
 
 
 // main function that queriestAPI for questions
@@ -69,7 +73,10 @@ if (numberOfQuestions == 10) {
     gameBoardArray = gameBoardArray.concat(boardCategories); 
   }
   gameBoardArray.length = 24;
-  console.log(gameBoardArray);
+  for (i=0; i<gameBoardArray.length; i++){
+    gameBoardText[i]="&&&"; //reset all game board tiles to placeholder text
+  }
+  gameBoardText[playerOnePosition]="😊";
 
   //create two rows of 12
   var row1 = $("<div>");
@@ -84,7 +91,7 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row1.append(tile);
   }
 
@@ -93,7 +100,7 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row2.append(tile);
   }
   
@@ -108,7 +115,10 @@ if (numberOfQuestions == 10) {
     gameBoardArray = gameBoardArray.concat(boardCategories); 
   }
   gameBoardArray.length = 60;
-  console.log(gameBoardArray);
+  for (i=0; i<gameBoardArray.length; i++){
+    gameBoardText[i]="&&&"; //reset all game board tiles to placeholder text
+  }
+  gameBoardText[playerOnePosition]="😊";
 
   //create five rows of 12
   var row1 = $("<div>");
@@ -132,7 +142,7 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row1.append(tile);
   }
 
@@ -141,34 +151,34 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row2.append(tile);
   }
 
-  //populate the second row
+  //populate the third row
   for (let i=24; i<36; i++) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row3.append(tile);
   }
 
-  //populate the second row
+  //populate the fourth row
   for (let i=36; i<48; i++) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row4.append(tile);
   }
 
-  //populate the second row
+  //populate the fifth row
   for (let i=48; i<60; i++) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row5.append(tile);
   }
 
@@ -262,6 +272,9 @@ function renderNextQuestion(data, questionsAnswered) {
     let answerContainer = $("<div>");
     answerContainer.addClass("answerContainer");
 
+    //answerContainer.addClass(data[questionsAnswered].category) //color the question background by the category
+
+
     for (let i = 0; i < answerArr.length; i++) {
       let answerBtn = $("<button>");
       answerBtn.text(answerArr[i]);
@@ -291,11 +304,15 @@ function shuffleAnswers(answers) {
 // function checks if passed user answer equals the current correct answer
 // adjusts score as needed
 // increases questionsAnswered number and passes back to render next question to determine how to proceed
-function checkAnswer(userAnswer) {
+function checkAnswer(userAnswer, category) {
   if (userAnswer === correctAnswer) {
     //! Replace this alert with something
     // alert("yay, that's right");
     pickQuery(0);
+    //TODO: update player position based on the category of the current question
+    //get the category of the question just answered
+    //for gameBoard
+
     // userScore += //need to figure out scoring mechanic
   } else {
     //! Replace this alert with something
@@ -322,7 +339,7 @@ function endGame() {
 // event delegation for the main display that will trigger on click of an answerBtn, take the text of the target, and pass it to the checkAnswer function
 $(".triviaDisplay").on("click", ".answerBtn", (e) => {
   let userAnswer = $(e.target).text();
-  checkAnswer(userAnswer);
+  checkAnswer(userAnswer, questionBank[questionsAnswered].category);
 });
 
 // event listener for start game function that collects user input and passes it to the inital query function
