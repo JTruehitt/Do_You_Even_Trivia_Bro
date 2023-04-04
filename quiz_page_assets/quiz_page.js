@@ -104,19 +104,28 @@ if (numberOfQuestions == 10) {
   //create five rows
   //create 24 element array repeating the board categories
   var gameBoardArray = [];
-  while (gameBoardArray.length<24){
+  while (gameBoardArray.length<60){
     gameBoardArray = gameBoardArray.concat(boardCategories); 
   }
-  gameBoardArray.length = 24;
+  gameBoardArray.length = 60;
   console.log(gameBoardArray);
 
-  //create two rows of 12
+  //create five rows of 12
   var row1 = $("<div>");
   var row2 = $("<div>");
+  var row3 = $("<div>");
+  var row4 = $("<div>");
+  var row5 = $("<div>");
   row1.addClass("row");
   row2.addClass("row");
+  row3.addClass("row");
+  row4.addClass("row");
+  row5.addClass("row");
   gameBoard.append(row1);
   gameBoard.append(row2);
+  gameBoard.append(row3);
+  gameBoard.append(row4);
+  gameBoard.append(row5);
 
   //populate the first row
   for (let i=0; i<12; i++) {
@@ -134,8 +143,35 @@ if (numberOfQuestions == 10) {
     tile.addClass("col s1");
     tile.text("&&&");
     row2.append(tile);
+  }
 
-}
+  //populate the second row
+  for (let i=24; i<36; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row2.append(tile);
+  }
+
+  //populate the second row
+  for (let i=36; i<48; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row2.append(tile);
+  }
+
+  //populate the second row
+  for (let i=48; i<60; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row2.append(tile);
+  }
+
 }
 }
 //function to build the gameboard
