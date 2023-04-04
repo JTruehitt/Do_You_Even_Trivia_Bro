@@ -9,6 +9,11 @@ let questionsAnswered = 0;
 let questionBank;
 let userScore = 0;
 let userSelections = {};
+var gameBoardArray = [];
+let gameBoardText = [];
+let playerOnePosition = -1;
+
+let categoryMap = new Map([["Arts & Literature", "arts_and_literature"], ["Film & TV","film_and_tv"], ["Food & Drink","food_and_drink"], ["General Knowledge","general_knowledge"], ["Geography","geography"], ["History","history"], ["Music","music"], ["Science","science"], ["Society & Culture","society_and_culture"], ["Sport & Leisure","sport_and_leisure"]]);
 
 
 // main function that queriestAPI for questions
@@ -58,18 +63,25 @@ function queryTAPI() {
 //20 questions >> 60 tiles
 function renderBoard() {
 
-let numberOfQuestions = userSelections.number.split("=")[1];
+console.log(playerOnePosition);
+//erase the old board
+gameBoard.empty();
+
+//could move these two lines to the global/query.then area, only need to call them once
+let numberOfQuestions = userSelections.number.split("=")[1]; 
 let boardCategories = userSelections.categories.split("=")[1].split(",");
 
 if (numberOfQuestions == 10) {
   //short board
   //create 24 element array repeating the board categories
-  var gameBoardArray = [];
   while (gameBoardArray.length<24){
     gameBoardArray = gameBoardArray.concat(boardCategories); 
   }
   gameBoardArray.length = 24;
-  console.log(gameBoardArray);
+  for (i=0; i<gameBoardArray.length; i++){
+    gameBoardText[i]="&&&"; //reset all game board tiles to placeholder text
+  }
+  gameBoardText[playerOnePosition]="😊";
 
   //create two rows of 12
   var row1 = $("<div>");
@@ -84,7 +96,7 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row1.append(tile);
   }
 
@@ -93,7 +105,7 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row2.append(tile);
   }
   
@@ -102,28 +114,39 @@ if (numberOfQuestions == 10) {
   //long board
   
   //create five rows
-  //create 24 element array repeating the board categories
-  var gameBoardArray = [];
-  while (gameBoardArray.length<24){
+  //create 60 element array repeating the board categories
+  while (gameBoardArray.length<60){
     gameBoardArray = gameBoardArray.concat(boardCategories); 
   }
-  gameBoardArray.length = 24;
-  console.log(gameBoardArray);
+  gameBoardArray.length = 60;
+  for (i=0; i<gameBoardArray.length; i++){
+    gameBoardText[i]="&&&"; //reset all game board tiles to placeholder text
+  }
+  gameBoardText[playerOnePosition]="😊";
 
-  //create two rows of 12
+  //create five rows of 12
   var row1 = $("<div>");
   var row2 = $("<div>");
+  var row3 = $("<div>");
+  var row4 = $("<div>");
+  var row5 = $("<div>");
   row1.addClass("row");
   row2.addClass("row");
+  row3.addClass("row");
+  row4.addClass("row");
+  row5.addClass("row");
   gameBoard.append(row1);
   gameBoard.append(row2);
+  gameBoard.append(row3);
+  gameBoard.append(row4);
+  gameBoard.append(row5);
 
   //populate the first row
   for (let i=0; i<12; i++) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row1.append(tile);
   }
 
@@ -132,42 +155,40 @@ if (numberOfQuestions == 10) {
     var tile = $("<div>");
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
-    tile.text("&&&");
+    tile.text(gameBoardText[i]);
     row2.append(tile);
+  }
+
+  //populate the third row
+  for (let i=24; i<36; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text(gameBoardText[i]);
+    row3.append(tile);
+  }
+
+  //populate the fourth row
+  for (let i=36; i<48; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text(gameBoardText[i]);
+    row4.append(tile);
+  }
+
+  //populate the fifth row
+  for (let i=48; i<60; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text(gameBoardText[i]);
+    row5.append(tile);
+  }
 
 }
 }
-}
-//function to build the gameboard
 
-
-
-//Dynamically create the board tiles, insert into the <footer>
-/* <div class="row">
-        <div class="col s1 red">1</div>
-        <div class="col s1 pink">2</div>
-        <div class="col s1 purple">3</div>
-        <div class="col s1 indigo">4</div>
-        <div class="col s1 blue">5</div>
-        <div class="col s1 teal">6</div>
-        <div class="col s1 green">7</div>
-        <div class="col s1 lime">8</div>
-        <div class="col s1 yellow">9</div>
-        <div class="col s1 orange">10</div>
-        <div class="col s1 red">11</div>
-        <div class="col s1 pink">12</div>
-      </div> */
-
-//The type of categories picked from the modal determine the tiles shown in board
-//create color classes in CSS for each category
-//assign color class to the question text somehow
-//assign the color to the board tiles for each category
-
-//TODO
-//Create a variable for a player
-//Create a variable for the board tiles array
-//Create a variable for each player's position along the board (starting at 0)
-//Create GAME OVER condition for when any player reaches the final tile
 
 //! OLD
 // function queryTAPI(userSelections) {
@@ -209,6 +230,7 @@ if (numberOfQuestions == 10) {
 // pushed correct and incorrect answers into one array, array is then shuffled, then returned array is pushed into buttons
 function renderNextQuestion(data, questionsAnswered) {
   triviaDisplay.empty();
+  renderBoard();
 
   if (questionsAnswered == data.length) {
     return endGame();
@@ -225,6 +247,10 @@ function renderNextQuestion(data, questionsAnswered) {
     answerArr = shuffleAnswers(answerArr);
     let answerContainer = $("<div>");
     answerContainer.addClass("answerContainer");
+
+    //turn the answer container the same color as the current question category
+    answerContainer.addClass(categoryMap.get(questionBank[questionsAnswered].category));
+
 
     for (let i = 0; i < answerArr.length; i++) {
       let answerBtn = $("<button>");
@@ -255,8 +281,27 @@ function shuffleAnswers(answers) {
 // function checks if passed user answer equals the current correct answer
 // adjusts score as needed
 // increases questionsAnswered number and passes back to render next question to determine how to proceed
-function checkAnswer(userAnswer) {
+function checkAnswer(userAnswer, category) {
   if (userAnswer === correctAnswer) {
+
+    //update player position based on the category of the current question
+    //get the category of the question just answered
+    //for gameBoard, find the next tile that matches the current category
+    // console.log("Player position: "+playerOnePosition);
+    // console.log("GameBoard length: "+gameBoardArray.length);
+    // console.log(category);
+    // console.log(categoryMap.get(category));
+    // console.log(gameBoardArray);
+    for (i=playerOnePosition+1; i<gameBoardArray.length; i++) {
+      if (categoryMap.get(category) == gameBoardArray[i])
+      {
+        playerOnePosition = i;
+        break;
+      } else if (i==gameBoardArray.length-1) {
+        //YOU WIN!
+        endGame(true);
+      }
+    }
     //! Replace this alert with something
     // alert("yay, that's right");
     pickQuery(0);
@@ -275,8 +320,13 @@ function checkAnswer(userAnswer) {
 }
 
 // function that triggers end game and redirects to next screen
-function endGame() {
+function endGame(winOrLose) {
   //! will need to sort this out and configure functionality once endgame page is made
+  if(winOrLose){
+    triviaDisplay.text("YOU WIN!");
+    return;
+  }
+  else
   triviaDisplay.text("GAME OVER");
   // localStorage.setItem("userScore", userScore)
   // location.assign("endgame.html")
@@ -286,7 +336,7 @@ function endGame() {
 // event delegation for the main display that will trigger on click of an answerBtn, take the text of the target, and pass it to the checkAnswer function
 $(".triviaDisplay").on("click", ".answerBtn", (e) => {
   let userAnswer = $(e.target).text();
-  checkAnswer(userAnswer);
+  checkAnswer(userAnswer, questionBank[questionsAnswered].category);
 });
 
 // event listener for start game function that collects user input and passes it to the inital query function
