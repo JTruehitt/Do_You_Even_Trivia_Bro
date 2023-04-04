@@ -69,7 +69,7 @@ function renderNextQuestion(data, questionsAnswered) {
     for (let i = 0; i < answerArr.length; i++) {
       let answerBtn = $("<button>");
       answerBtn.text(answerArr[i]);
-      answerBtn.addClass("answerBtn");
+      answerBtn.addClass("answerBtn orange lighten-1 z-depth-4 btn ");
       answerContainer.append(answerBtn);
     }
 
