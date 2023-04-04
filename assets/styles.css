@@ -49,3 +49,45 @@ body {
   }
 
    /* * MODAL / Intake Form CSS END */
+
+   /*Game Board Styling */
+
+   .arts_and_literature {
+      background-color: red;
+   }
+
+   .film_and_tv {
+    background-color: orange;
+   }
+
+   .food_and_drink {
+    background-color: yellow;
+   }
+
+   .general_knowledge {
+    background-color: green;
+   }
+
+   .geography {
+    background-color: blue;
+   }
+
+   .history {
+    background-color: purple;
+   }
+
+   .music {
+    background-color: pink;
+   }
+
+   .science {
+    background-color: grey;
+   }
+
+   .society_and_culture {
+    background-color: aqua;
+   }
+
+   .sport_and_leisure {
+    background-color: teal;
+   }

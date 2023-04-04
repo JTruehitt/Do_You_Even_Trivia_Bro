@@ -2,11 +2,14 @@
 
 // setting global varibales
 let triviaDisplay = $(".triviaDisplay");
+let gameBoard = $(".gameBoard");
 let userAnswer;
 let correctAnswer;
 let questionsAnswered = 0;
 let questionBank;
 let userScore = 0;
+let userSelections = {};
+
 
 // main function that queriestAPI for questions
 // parses the user inputs to build the queryURL
@@ -26,7 +29,7 @@ function queryTAPI() {
   // }
 
   //! URL Method--------------------------
-  let userSelections = {};
+  //let userSelections = {};
   userSelections.categories = location.search.split("?")[1];
   userSelections.number = location.search.split("?")[2];
   userSelections.difficulty = location.search.split("?")[3];
@@ -48,6 +51,124 @@ function queryTAPI() {
       renderNextQuestion(data, questionsAnswered);
     });
 }
+
+//TODO
+//TrackingBoard length is determined by the number of questions
+//7 questions >> 24 tiles
+//20 questions >> 60 tiles
+function renderBoard() {
+
+let numberOfQuestions = userSelections.number.split("=")[1];
+let boardCategories = userSelections.categories.split("=")[1].split(",");
+
+if (numberOfQuestions == 10) {
+  //short board
+  //create 24 element array repeating the board categories
+  var gameBoardArray = [];
+  while (gameBoardArray.length<24){
+    gameBoardArray = gameBoardArray.concat(boardCategories); 
+  }
+  gameBoardArray.length = 24;
+  console.log(gameBoardArray);
+
+  //create two rows of 12
+  var row1 = $("<div>");
+  var row2 = $("<div>");
+  row1.addClass("row");
+  row2.addClass("row");
+  gameBoard.append(row1);
+  gameBoard.append(row2);
+
+  //populate the first row
+  for (let i=0; i<12; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row1.append(tile);
+  }
+
+  //populate the second row
+  for (let i=12; i<24; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row2.append(tile);
+  }
+  
+}else if (numberOfQuestions == 20)
+{
+  //long board
+  
+  //create five rows
+  //create 24 element array repeating the board categories
+  var gameBoardArray = [];
+  while (gameBoardArray.length<24){
+    gameBoardArray = gameBoardArray.concat(boardCategories); 
+  }
+  gameBoardArray.length = 24;
+  console.log(gameBoardArray);
+
+  //create two rows of 12
+  var row1 = $("<div>");
+  var row2 = $("<div>");
+  row1.addClass("row");
+  row2.addClass("row");
+  gameBoard.append(row1);
+  gameBoard.append(row2);
+
+  //populate the first row
+  for (let i=0; i<12; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row1.append(tile);
+  }
+
+  //populate the second row
+  for (let i=12; i<24; i++) {
+    var tile = $("<div>");
+    tile.addClass(gameBoardArray[i]);
+    tile.addClass("col s1");
+    tile.text("&&&");
+    row2.append(tile);
+
+}
+}
+}
+//function to build the gameboard
+
+
+
+//Dynamically create the board tiles, insert into the <footer>
+/* <div class="row">
+        <div class="col s1 red">1</div>
+        <div class="col s1 pink">2</div>
+        <div class="col s1 purple">3</div>
+        <div class="col s1 indigo">4</div>
+        <div class="col s1 blue">5</div>
+        <div class="col s1 teal">6</div>
+        <div class="col s1 green">7</div>
+        <div class="col s1 lime">8</div>
+        <div class="col s1 yellow">9</div>
+        <div class="col s1 orange">10</div>
+        <div class="col s1 red">11</div>
+        <div class="col s1 pink">12</div>
+      </div> */
+
+//The type of categories picked from the modal determine the tiles shown in board
+//create color classes in CSS for each category
+//assign color class to the question text somehow
+//assign the color to the board tiles for each category
+
+//TODO
+//Create a variable for a player
+//Create a variable for the board tiles array
+//Create a variable for each player's position along the board (starting at 0)
+//Create GAME OVER condition for when any player reaches the final tile
+
 //! OLD
 // function queryTAPI(userSelections) {
 //   let categoryQuery;
@@ -234,7 +355,7 @@ function pickQuery(result) {
   }
 }
 
-function queryTAPI() {
+//function queryTAPI() {
   //! LocalStorage Method-----------------
   // let userSelections = JSON.parse(localStorage.getItem("userSelections"));
 
@@ -248,27 +369,28 @@ function queryTAPI() {
   // }
 
   //! URL Method--------------------------
-  let userSelections = {};
-  userSelections.categories = location.search.split("?")[1];
-  userSelections.number = location.search.split("?")[2];
-  userSelections.difficulty = location.search.split("?")[3];
-  //!-------------------------------------
+  // let userSelections = {};
+  // userSelections.categories = location.search.split("?")[1];
+  // userSelections.number = location.search.split("?")[2];
+  // userSelections.difficulty = location.search.split("?")[3];
+  // //!-------------------------------------
 
-  let queryURL =
-    "https://the-trivia-api.com/api/questions?" +
-    userSelections.categories +
-    userSelections.number +
-    "&region=US" +
-    userSelections.difficulty;
+  // let queryURL =
+  //   "https://the-trivia-api.com/api/questions?" +
+  //   userSelections.categories +
+  //   userSelections.number +
+  //   "&region=US" +
+  //   userSelections.difficulty;
 
-  console.log(queryURL);
-  fetch(queryURL)
-    .then((res) => res.json())
-    .then((data) => {
-      questionBank = data;
-      console.log(data);
-      renderNextQuestion(data, questionsAnswered);
-    });
-}
+  // console.log(queryURL);
+  // fetch(queryURL)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     questionBank = data;
+  //     console.log(data);
+  //     renderNextQuestion(data, questionsAnswered);
+  //   });
+//}
 
 queryTAPI();
+renderBoard();
