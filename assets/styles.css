@@ -8,4 +8,98 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+  /* * MODAL / Intake Form CSS */
+
+  label {
+    display: block;
+  }
   
+  .form-wrapper > * + * {
+    margin-block-start: 3em;
+  }
+  
+  .form-wrapper {
+    padding-inline: 4em;
+  }
+  
+  .checkbox-wrapper {
+    /* padding-inline: 4em; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .checkbox-wrapper > * {
+    min-inline-size: 25ch;
+  }
+  
+  .selectAllBtn {
+    margin-block-end: 1em;
+  }
+  .mainPageBtnWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .mainPageBtnWrapper > * {
+    min-inline-size: 30ch;
+  }
+  
+  .modal {
+    max-inline-size: 60ch;
+  }
+
+   /* * MODAL / Intake Form CSS END */
+
+   /*Game Board Styling */
+
+   .arts_and_literature {
+      background-color:#bd8ff2;
+   }
+
+   .film_and_tv {
+    background-color: orange;
+   }
+
+   .food_and_drink {
+    background-color: yellow;
+   }
+
+   .general_knowledge {
+    background-color: green;
+   }
+
+   .geography {
+    background-color: blue;
+   }
+
+   .history {
+    background-color: purple;
+   }
+
+   .music {
+    background-color: pink;
+   }
+
+   .science {
+    background-color: grey;
+   }
+
+   .society_and_culture {
+    background-color: aqua;
+   }
+
+   .sport_and_leisure {
+    background-color: teal;
+   }
+
+   /*  */
+
+   .resumeGameBtn {
+    display: none;
+   }
