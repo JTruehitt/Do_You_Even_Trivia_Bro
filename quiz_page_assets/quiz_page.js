@@ -9,46 +9,36 @@ let questionsAnswered = 0;
 let questionBank;
 let userScore = 0;
 let userSelections = {};
-
+const currentGame = {
+  questionBank,
+  userSelections,
+  userScore,
+  questionsAnswered,
+};
 
 // main function that queriestAPI for questions
 // parses the user inputs to build the queryURL
 // handles the response, sets data as global variable questionBank to be referenced moving forward, passes data to renderNextQuestion function along with questionsAnswered count to keep track
 
 function queryTAPI() {
-  //! LocalStorage Method-----------------
-  // let userSelections = JSON.parse(localStorage.getItem("userSelections"));
-
-  // if (userSelections.categories.length === 10) {
-  //   userSelections.categories = "";
-  // } else  {
-  //   userSelections.categories = "categories=" + userSelections.categories.join();
-  // }
-  // if (userSelections.difficulty == "any") {
-  //   userSelections.difficulty = "";
-  // }
-
-  //! URL Method--------------------------
-  //let userSelections = {};
-  userSelections.categories = location.search.split("?")[1];
-  userSelections.number = location.search.split("?")[2];
-  userSelections.difficulty = location.search.split("?")[3];
-  //!-------------------------------------
-
+  currentGame.userSelections.categories = location.search.split("?")[1];
+  currentGame.userSelections.number = location.search.split("?")[2];
+  currentGame.userSelections.difficulty = location.search.split("?")[3];
+  console.log(currentGame);
   let queryURL =
     "https://the-trivia-api.com/api/questions?" +
-    userSelections.categories +
-    userSelections.number +
+    currentGame.userSelections.categories +
+    currentGame.userSelections.number +
     "&region=US" +
-    userSelections.difficulty;
+    currentGame.userSelections.difficulty;
 
   console.log(queryURL);
   fetch(queryURL)
     .then((res) => res.json())
     .then((data) => {
-      questionBank = data;
+      currentGame.questionBank = data;
       console.log(data);
-      renderNextQuestion(data, questionsAnswered);
+      renderNextQuestion(data, currentGame.questionsAnswered);
     });
 }
 
@@ -57,90 +47,86 @@ function queryTAPI() {
 //7 questions >> 24 tiles
 //20 questions >> 60 tiles
 function renderBoard() {
+  let numberOfQuestions = currentGame.userSelections.number.split("=")[1];
+  let boardCategories = currentGame.userSelections.categories
+    .split("=")[1]
+    .split(",");
 
-let numberOfQuestions = userSelections.number.split("=")[1];
-let boardCategories = userSelections.categories.split("=")[1].split(",");
+  if (numberOfQuestions == 10) {
+    //short board
+    //create 24 element array repeating the board categories
+    var gameBoardArray = [];
+    while (gameBoardArray.length < 24) {
+      gameBoardArray = gameBoardArray.concat(boardCategories);
+    }
+    gameBoardArray.length = 24;
+    console.log(gameBoardArray);
 
-if (numberOfQuestions == 10) {
-  //short board
-  //create 24 element array repeating the board categories
-  var gameBoardArray = [];
-  while (gameBoardArray.length<24){
-    gameBoardArray = gameBoardArray.concat(boardCategories); 
+    //create two rows of 12
+    var row1 = $("<div>");
+    var row2 = $("<div>");
+    row1.addClass("row");
+    row2.addClass("row");
+    gameBoard.append(row1);
+    gameBoard.append(row2);
+
+    //populate the first row
+    for (let i = 0; i < 12; i++) {
+      var tile = $("<div>");
+      tile.addClass(gameBoardArray[i]);
+      tile.addClass("col s1");
+      tile.text("&&&");
+      row1.append(tile);
+    }
+
+    //populate the second row
+    for (let i = 12; i < 24; i++) {
+      var tile = $("<div>");
+      tile.addClass(gameBoardArray[i]);
+      tile.addClass("col s1");
+      tile.text("&&&");
+      row2.append(tile);
+    }
+  } else if (numberOfQuestions == 20) {
+    //long board
+
+    //create five rows
+    //create 24 element array repeating the board categories
+    var gameBoardArray = [];
+    while (gameBoardArray.length < 24) {
+      gameBoardArray = gameBoardArray.concat(boardCategories);
+    }
+    gameBoardArray.length = 24;
+    console.log(gameBoardArray);
+
+    //create two rows of 12
+    var row1 = $("<div>");
+    var row2 = $("<div>");
+    row1.addClass("row");
+    row2.addClass("row");
+    gameBoard.append(row1);
+    gameBoard.append(row2);
+
+    //populate the first row
+    for (let i = 0; i < 12; i++) {
+      var tile = $("<div>");
+      tile.addClass(gameBoardArray[i]);
+      tile.addClass("col s1");
+      tile.text("&&&");
+      row1.append(tile);
+    }
+
+    //populate the second row
+    for (let i = 12; i < 24; i++) {
+      var tile = $("<div>");
+      tile.addClass(gameBoardArray[i]);
+      tile.addClass("col s1");
+      tile.text("&&&");
+      row2.append(tile);
+    }
   }
-  gameBoardArray.length = 24;
-  console.log(gameBoardArray);
-
-  //create two rows of 12
-  var row1 = $("<div>");
-  var row2 = $("<div>");
-  row1.addClass("row");
-  row2.addClass("row");
-  gameBoard.append(row1);
-  gameBoard.append(row2);
-
-  //populate the first row
-  for (let i=0; i<12; i++) {
-    var tile = $("<div>");
-    tile.addClass(gameBoardArray[i]);
-    tile.addClass("col s1");
-    tile.text("&&&");
-    row1.append(tile);
-  }
-
-  //populate the second row
-  for (let i=12; i<24; i++) {
-    var tile = $("<div>");
-    tile.addClass(gameBoardArray[i]);
-    tile.addClass("col s1");
-    tile.text("&&&");
-    row2.append(tile);
-  }
-  
-}else if (numberOfQuestions == 20)
-{
-  //long board
-  
-  //create five rows
-  //create 24 element array repeating the board categories
-  var gameBoardArray = [];
-  while (gameBoardArray.length<24){
-    gameBoardArray = gameBoardArray.concat(boardCategories); 
-  }
-  gameBoardArray.length = 24;
-  console.log(gameBoardArray);
-
-  //create two rows of 12
-  var row1 = $("<div>");
-  var row2 = $("<div>");
-  row1.addClass("row");
-  row2.addClass("row");
-  gameBoard.append(row1);
-  gameBoard.append(row2);
-
-  //populate the first row
-  for (let i=0; i<12; i++) {
-    var tile = $("<div>");
-    tile.addClass(gameBoardArray[i]);
-    tile.addClass("col s1");
-    tile.text("&&&");
-    row1.append(tile);
-  }
-
-  //populate the second row
-  for (let i=12; i<24; i++) {
-    var tile = $("<div>");
-    tile.addClass(gameBoardArray[i]);
-    tile.addClass("col s1");
-    tile.text("&&&");
-    row2.append(tile);
-
-}
-}
 }
 //function to build the gameboard
-
-
 
 //Dynamically create the board tiles, insert into the <footer>
 /* <div class="row">
@@ -168,40 +154,6 @@ if (numberOfQuestions == 10) {
 //Create a variable for the board tiles array
 //Create a variable for each player's position along the board (starting at 0)
 //Create GAME OVER condition for when any player reaches the final tile
-
-//! OLD
-// function queryTAPI(userSelections) {
-//   let categoryQuery;
-//   let difficultyQuery;
-
-//   if (userSelections.categories == "any") {
-//     categoryQuery = "";
-//   } else if (userSelections.categories.length >= 1)
-//     categoryQuery = "categories=" + userSelections.categories.join();
-
-//   if (userSelections.difficulty == "any") {
-//     difficultyQuery = "";
-//   } else {
-//     difficultyQuery = "&difficulty=" + userSelections.difficulty;
-//   }
-
-//   let baseURL =
-//     "https://the-trivia-api.com/api/questions?" +
-//     categoryQuery +
-//     userSelections.number +
-//     "&region=US" +
-//     difficultyQuery;
-
-//   let queryURL = baseURL;
-//   fetch(queryURL)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       questionBank = data;
-//       console.log(data);
-//       renderNextQuestion(data, questionsAnswered);
-//     });
-// }
-//! OLD
 
 // function that renders current question to the page
 // first empties the display, and if # of questions answered = length of the question array, pushes to endgame
@@ -268,9 +220,9 @@ function checkAnswer(userAnswer) {
     // userScore -= //need to figure out scoring mechanic
   }
 
-  questionsAnswered++;
+  currentGame.questionsAnswered++;
   setTimeout(function () {
-    renderNextQuestion(questionBank, questionsAnswered);
+    renderNextQuestion(currentGame.questionBank, currentGame.questionsAnswered);
   }, 3000);
 }
 
@@ -287,24 +239,6 @@ function endGame() {
 $(".triviaDisplay").on("click", ".answerBtn", (e) => {
   let userAnswer = $(e.target).text();
   checkAnswer(userAnswer);
-});
-
-// event listener for start game function that collects user input and passes it to the inital query function
-// ! once landing page is made, this will just turn to a function that is called on load as start button will be on that page
-$(".startGameBtn").click(() => {
-  let categories = [];
-  $("input[type=checkbox]:checked").each(function () {
-    categories.push($(this).val());
-  });
-  let difficulty = $("#difficulty").val();
-
-  //! line 141 is just a placeholder until we figure out a number slider or something
-  //  let number = "&limit=" + $("#number").val();
-  let number = "&limit=5";
-
-  let userSelections = { categories, difficulty, number };
-
-  queryTAPI(userSelections);
 });
 
 // GIPHY FUNCTIONS -------------------------------------------
@@ -354,43 +288,6 @@ function pickQuery(result) {
     queryGiphy(query);
   }
 }
-
-//function queryTAPI() {
-  //! LocalStorage Method-----------------
-  // let userSelections = JSON.parse(localStorage.getItem("userSelections"));
-
-  // if (userSelections.categories.length === 10) {
-  //   userSelections.categories = "";
-  // } else  {
-  //   userSelections.categories = "categories=" + userSelections.categories.join();
-  // }
-  // if (userSelections.difficulty == "any") {
-  //   userSelections.difficulty = "";
-  // }
-
-  //! URL Method--------------------------
-  // let userSelections = {};
-  // userSelections.categories = location.search.split("?")[1];
-  // userSelections.number = location.search.split("?")[2];
-  // userSelections.difficulty = location.search.split("?")[3];
-  // //!-------------------------------------
-
-  // let queryURL =
-  //   "https://the-trivia-api.com/api/questions?" +
-  //   userSelections.categories +
-  //   userSelections.number +
-  //   "&region=US" +
-  //   userSelections.difficulty;
-
-  // console.log(queryURL);
-  // fetch(queryURL)
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     questionBank = data;
-  //     console.log(data);
-  //     renderNextQuestion(data, questionsAnswered);
-  //   });
-//}
 
 queryTAPI();
 renderBoard();

@@ -10,7 +10,7 @@ $(".startGameBtn").click(function () {
 
 difficultySelect.formSelect();
 
-//!remove if don't use
+//!remove if don't use ------------------------
 $(".numberSelect").formSelect();
 
 selectAllCategories.click((e) => {
@@ -24,23 +24,7 @@ selectAllCategories.click((e) => {
   });
 });
 
-//! localStorage data transfer method
-// submitUserSelectionBtn.click(() => {
-//   let categories = [];
-//   $("input[type=checkbox]:checked").each(function () {
-//     categories.push($(this).val());
-//   });
-//   let difficulty = $("#difficulty").val();
 
-//   let number = "&limit=" + $("#number").val();
-
-//   let userSelections = { categories, difficulty, number };
-//   localStorage.setItem("userSelections", JSON.stringify(userSelections));
-//   location.assign("secondpage.html");
-// queryTAPI(userSelections);
-// });
-
-//! URL string data transfer method
 submitUserSelectionBtn.click(() => {
   let categories = [];
   $("input[type=checkbox]:checked").each(function () {
@@ -48,7 +32,14 @@ submitUserSelectionBtn.click(() => {
   });
   let difficulty = $("#difficulty").val();
 
-  let number = "&limit=" + $("#number").val();
+  let number = $("#number").val();
+
+  if (!categories.length || !number) {
+    //! Fix THIS ALERT TO BE SOMETHING ELSE --------------------------
+    alert("Please fill out");
+    submitUserSelectionBtn.removeClass("modal-close");
+  } else {
+    number = "&limit=" + number;
 
   location.assign(
     "quiz_page_assets/Quiz_page.html" +
@@ -59,5 +50,5 @@ submitUserSelectionBtn.click(() => {
       "?" +
       difficulty
   );
-  // queryTAPI(userSelections);
+  }
 });
