@@ -3,14 +3,26 @@
 let difficultySelect = $(".difficultySelect");
 let submitUserSelectionBtn = $(".submitUserSelectionsBtn");
 let selectAllCategories = $(".selectAllBtn");
+let mainPageBtnWrapper = $(".mainPageBtnWrapper");
+let startGameBtn = $(".startGameBtn");
+let proceedWithNewGameBtn = $(".proceedWithNewGameBtn");
+let resumeGameBtn = $(".resumeGameBtn");
+let secondChanceResumeGameBtn = $(".secondChanceResumeGameBtn")
+let gameInProgress;
 
-$(".startGameBtn").click(function () {
-  $(".modal").modal();
+startGameBtn.click(function () {
+  if (!gameInProgress) {
+  $("#modal1").modal();
+  } else {
+    startGameBtn.attr("data-target", "modal2")
+    $("#modal2").modal();
+    // alert("u sure about that?")
+  }
 });
 
 difficultySelect.formSelect();
 
-//!remove if don't use
+//!remove if don't use ------------------------
 $(".numberSelect").formSelect();
 
 selectAllCategories.click((e) => {
@@ -24,34 +36,26 @@ selectAllCategories.click((e) => {
   });
 });
 
-//! localStorage data transfer method
-// submitUserSelectionBtn.click(() => {
-//   let categories = [];
-//   $("input[type=checkbox]:checked").each(function () {
-//     categories.push($(this).val());
-//   });
-//   let difficulty = $("#difficulty").val();
 
-//   let number = "&limit=" + $("#number").val();
-
-//   let userSelections = { categories, difficulty, number };
-//   localStorage.setItem("userSelections", JSON.stringify(userSelections));
-//   location.assign("secondpage.html");
-// queryTAPI(userSelections);
-// });
-
-//! URL string data transfer method
 submitUserSelectionBtn.click(() => {
+  
   let categories = [];
   $("input[type=checkbox]:checked").each(function () {
     categories.push($(this).val());
   });
   let difficulty = $("#difficulty").val();
 
-  let number = "&limit=" + $("#number").val();
+  let number = $("#number").val();
+
+  if (!categories.length || !number) {
+    //! Fix THIS ALERT TO BE SOMETHING ELSE --------------------------
+    alert("Please fill out");
+    submitUserSelectionBtn.removeClass("modal-close");
+  } else {
+    number = "&limit=" + number;
 
   location.assign(
-    "quiz_page_assets/Quiz_page.html" +
+    "quiz_page_assets/quiz_page.html" +
       "?categories=" +
       categories.join() +
       "?" +
@@ -59,5 +63,40 @@ submitUserSelectionBtn.click(() => {
       "?" +
       difficulty
   );
-  // queryTAPI(userSelections);
-});
+  }
+} 
+);
+
+function checkForGameInProgress() {
+  let currentGame = JSON.parse(localStorage.getItem("currentGame"));
+console.log(currentGame)
+  if (!currentGame) {
+    gameInProgress = false;
+    return;
+  } else {
+    resumeGameBtn.css("display", "block");
+    localStorage.setItem("gameInProgress", "true")
+    gameInProgress = true;
+    // let resumeGameBtn = $("<button>");
+    // resumeGameBtn.text("Resume Previous Game");
+    // resumeGameBtn.addClass("btn btn-large resumeGameBtn")
+    // mainPageBtnWrapper.append(resumeGameBtn);
+  }
+}
+
+proceedWithNewGameBtn.click(() => {
+  localStorage.removeItem("currentGame");
+  localStorage.removeItem("gameInProgress");
+  $("#modal1").modal();
+})
+
+resumeGameBtn.click(() => {
+  location.assign("quiz_page_assets/quiz_page.html");
+})
+
+secondChanceResumeGameBtn.click(() => {
+  location.assign("quiz_page_assets/quiz_page.html");
+})
+
+checkForGameInProgress()
+
