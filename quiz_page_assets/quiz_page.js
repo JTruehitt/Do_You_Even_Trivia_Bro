@@ -151,7 +151,7 @@ if (numberOfQuestions == 10) {
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
     tile.text("&&&");
-    row2.append(tile);
+    row3.append(tile);
   }
 
   //populate the second row
@@ -160,7 +160,7 @@ if (numberOfQuestions == 10) {
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
     tile.text("&&&");
-    row2.append(tile);
+    row4.append(tile);
   }
 
   //populate the second row
@@ -169,7 +169,7 @@ if (numberOfQuestions == 10) {
     tile.addClass(gameBoardArray[i]);
     tile.addClass("col s1");
     tile.text("&&&");
-    row2.append(tile);
+    row5.append(tile);
   }
 
 }
