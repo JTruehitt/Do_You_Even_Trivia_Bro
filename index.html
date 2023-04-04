@@ -1,121 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="./assets/Materialize CSS and JS files/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" href="./assets/styles.css">
-    <title>Document</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <main class="container center-align"> <!-- materialize class container centers the content, and trims to about 70% of window width -->
-        
-        <div class="startBtnWrapper"><button data-target="modal1" class="btn btn-large modal-trigger startGameBtn">Start Game</button></div>
-  
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="./assets/Materialize CSS and JS files/materialize.min.css"
+      media="screen,projection"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="container center-align">
+      <!-- materialize class container centers the content, and trims to about 70% of window width -->
+
+      <div class="mainPageBtnWrapper">
+        <button
+          data-target="modal1"
+          class="btn btn-large modal-trigger startGameBtn"
+        >
+          Start New Game
+        </button>
+        <button class="btn btn-large resumeGameBtn">
+          Resume Previous Game
+        </button>
+      </div>
+
       <div id="modal1" class="modal">
-          <div class="modal-content">
-            <h4 class="center-align">Select Your Options</h4>
-            <form class="form-wrapper left-align">
-              <div class="formSection categoriesSection">
-                  <h5>Categories:</h3>
-                  <div class="checkbox-wrapper">
-                      <button class="selectAllBtn btn">Select All</button>
-                      
-                        <label for="arts_and_literature">
-                          <input type="checkbox" class="filled-in" id="arts_and_literature" value="arts_and_literature" />
-                          <span>Arts and Literature</span>
-                        </label>
-                        <label for="film_and_tv">
-                          <input type="checkbox" class="filled-in" id="film_and_tv" value="film_and_tv" />
-                          <span>Film and TV</span>
-                        </label>
-                        <label for="food_and_drink">
-                          <input type="checkbox" class="filled-in" id="food_and_drink" value="food_and_drink" />
-                          <span>Food and Drink</span>
-                        </label>
-                        <label for="general_knowledge">
-                          <input type="checkbox" class="filled-in" id="general_knowledge" value="general_knowledge" />
-                          <span>General Knowledge</span>
-                        </label>
-                        <label for="geography">
-                          <input type="checkbox" class="filled-in" id="geography" value="geography" />
-                          <span>Geography</span>
-                        </label>
-                        <label for="history">
-                          <input type="checkbox" class="filled-in" id="history" value="history" />
-                          <span>History</span>
-                        </label>
-                        <label for="music">
-                          <input type="checkbox" class="filled-in" id="music" value="music" />
-                          <span>Music</span>
-                        </label>
-                        <label for="science">
-                          <input type="checkbox" class="filled-in" id="science" value="science" />
-                          <span>Science</span>
-                        </label>
-                        <label for="society_and_culture">
-                          <input type="checkbox" class="filled-in" id="society_and_culture" value="society_and_culture" />
-                          <span>Society and Culture</span>
-                        </label>
-                        <label for="sport_and_leisure">
-                          <input type="checkbox" class="filled-in" id="sport_and_leisure" value="sport_and_leisure" />
-                          <span>Sport and Leisure</span>
-                        </label>
-                  </div>
+        <div class="modal-content">
+          <h4 class="center-align">Select Your Options</h4>
+          <form class="form-wrapper left-align">
+            <div class="formSection categoriesSection">
+              <h5>Categories:</h5>
+              <div class="checkbox-wrapper">
+                <button class="selectAllBtn btn">Select All</button>
+
+                <label for="arts_and_literature">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="arts_and_literature"
+                    value="arts_and_literature"
+                  />
+                  <span>Arts and Literature</span>
+                </label>
+                <label for="film_and_tv">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="film_and_tv"
+                    value="film_and_tv"
+                  />
+                  <span>Film and TV</span>
+                </label>
+                <label for="food_and_drink">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="food_and_drink"
+                    value="food_and_drink"
+                  />
+                  <span>Food and Drink</span>
+                </label>
+                <label for="general_knowledge">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="general_knowledge"
+                    value="general_knowledge"
+                  />
+                  <span>General Knowledge</span>
+                </label>
+                <label for="geography">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="geography"
+                    value="geography"
+                  />
+                  <span>Geography</span>
+                </label>
+                <label for="history">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="history"
+                    value="history"
+                  />
+                  <span>History</span>
+                </label>
+                <label for="music">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="music"
+                    value="music"
+                  />
+                  <span>Music</span>
+                </label>
+                <label for="science">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="science"
+                    value="science"
+                  />
+                  <span>Science</span>
+                </label>
+                <label for="society_and_culture">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="society_and_culture"
+                    value="society_and_culture"
+                  />
+                  <span>Society and Culture</span>
+                </label>
+                <label for="sport_and_leisure">
+                  <input
+                    type="checkbox"
+                    class="filled-in"
+                    id="sport_and_leisure"
+                    value="sport_and_leisure"
+                  />
+                  <span>Sport and Leisure</span>
+                </label>
               </div>
-      
-                <div class="formSection difficultySection">
-                    <h5>Difficulty:</h5>
-                    <div class="input-field col s12">
-                      <select id="difficulty" class="difficultySelect">
-                        <option value="" selected>Mixed</option>
-                        <option value="&difficulty=easy">Easy</option>
-                        <option value="&difficulty=medium">Medium</option>
-                        <option value="&difficulty=hard">Hard</option>
-                      </select>
-                    </div>
-                </div>
-                
-                <div class="formSection numberSection">
-                    <h5>Number of Questions</h5>
-                    <!-- ! DELETE IF NOT USED -->
-                    <!-- <p class="range-field">
+            </div>
+
+            <div class="formSection difficultySection">
+              <h5>Difficulty:</h5>
+              <div class="input-field col s12">
+                <select id="difficulty" class="difficultySelect">
+                  <option value="" selected>Mixed</option>
+                  <option value="&difficulty=easy">Easy</option>
+                  <option value="&difficulty=medium">Medium</option>
+                  <option value="&difficulty=hard">Hard</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="formSection numberSection">
+              <h5>Number of Questions</h5>
+              <!-- ! DELETE IF NOT USED -->
+              <!-- <p class="range-field">
                       <input type="range" id="number" min="5" max="20" />
                     </p> -->
-                    <!-- ! -->
-                    <div class="input-field col s12">
-                      <select id="number" class="numberSelect">
-                        <option disabled selected>Choose...</option>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        </select>
-                        </div>
-                </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-              <button class="modal-close waves-effect waves-green btn-flat">Back Out Now
-              </button>
-            <button class="modal-close waves-effect waves-green btn submitUserSelectionsBtn">Let's Go!</button>
-          </div>
+              <!-- ! -->
+              <div class="input-field col s12">
+                <select id="number" class="numberSelect">
+                  <option disabled selected>Choose...</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                </select>
+              </div>
+            </div>
+          </form>
         </div>
+        <div class="modal-footer">
+          <button class="modal-close waves-effect waves-green btn-flat">
+            Back Out Now
+          </button>
+          <button
+            class="modal-close waves-effect waves-green btn submitUserSelectionsBtn"
+          >
+            Let's Go!
+          </button>
+        </div>
+      </div>
 
-        <!-- jQuery -->
-        <script
-        src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-        crossorigin="anonymous"
-      ></script>
-      <!-- Materialize JS -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!-- OVERWRITE PROGRESS MODAL -->
 
-      <script src="./assets/mainpage.js"></script>
-</body>
+      <div id="modal2" class="modal">
+        <div class="modal-content">
+          <h4>Are you sure?</h4>
+          <p>
+            Starting a new game will overwrite your previous game's progress!
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button
+            class="modal-close waves-effect waves-green btn-flat secondChanceResumeGameBtn"
+          >
+            Resume Previous Game
+          </button>
+          <button
+            data-target="modal1"
+            class="modal-close modal-trigger waves-effect waves-green btn proceedWithNewGameBtn"
+          >
+            Yes, New Game
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="./assets/mainpage.js"></script>
+  </body>
 </html>
