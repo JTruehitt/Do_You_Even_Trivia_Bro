@@ -57,35 +57,35 @@ body {
    }
 
    .film_and_tv {
-    background-color: orange;
+    background-color:#bf1313;
    }
 
    .food_and_drink {
-    background-color: yellow;
+    background-color: #84cfbc;
    }
 
    .general_knowledge {
-    background-color: green;
+    background-color: #e4db89;
    }
 
    .geography {
-    background-color: blue;
+    background-color: #0b4f0a ;
    }
 
    .history {
-    background-color: purple;
+    background-color: #8a3f0e;
    }
 
    .music {
-    background-color: pink;
+    background-color: #cf6017;
    }
 
    .science {
-    background-color: grey;
+    background-color: #6bfc3a;
    }
 
    .society_and_culture {
-    background-color: aqua;
+    background-color: #e7bd6f;
    }
 
    .sport_and_leisure {
