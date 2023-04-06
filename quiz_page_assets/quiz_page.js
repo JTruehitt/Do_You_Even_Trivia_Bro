@@ -213,7 +213,8 @@ function renderNextQuestion(data, questionsAnswered) {
     answerArr = shuffleAnswers(answerArr);
     let answerContainer = $("<div>");
     answerContainer.addClass("answerContainer");
-
+    questionContainer.addClass("center wrapper " );
+    question.addClass("question")
     //turn the answer container the same color as the current question category
     answerContainer.addClass(
       categoryMap.get(currentGame.questionBank[questionsAnswered].category)
@@ -222,8 +223,9 @@ function renderNextQuestion(data, questionsAnswered) {
     for (let i = 0; i < answerArr.length; i++) {
       let answerBtn = $("<button>");
       answerBtn.text(answerArr[i]);
-      answerBtn.addClass("answerBtn");
+      answerBtn.addClass("answerBtn z-depth-5");
       answerContainer.append(answerBtn);
+      
     }
 
     question.text(data[questionsAnswered].question);
