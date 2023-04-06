@@ -10,6 +10,7 @@ body {
     background-color:  #ffe49e;
   }
 
+
   main {
     flex: 1 0 auto;
   }
@@ -112,7 +113,7 @@ body {
    /* Begin Finale Page Styling */
    * {
     background-color: var(--gold);
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     color: white;
    }
 
@@ -120,7 +121,7 @@ body {
     background-image: url(../assets/images/yellow-brick-rd-finale.jpg);
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 75vh;
     width: 100vw;
    }
 
@@ -172,7 +173,7 @@ body {
     }
 
     button {
-      font-family: 'Press Start 2P', cursive;
+      font-family: 'Press Start 2P';
     }
     
     .restart-btn {
@@ -286,7 +287,7 @@ body {
     /* border: 3px solid; */
     border-radius: 20px;
   }
-  .center {
+  .centerQuiz {
     box-sizing: content-box;
     margin-inline: auto;
     /* max-inline-size: 70ch; */
@@ -312,10 +313,10 @@ body {
   }
   .question{
     font-size: 1.5em;
-    background-color: #ffe49e;
+    background-color: #ea0b0bff;
   }
 .answerBtn {
-  background-color: #ea0b0bff;
+  background-color: #FFE49E;
   font-style: italic;
   font-size: large;
   

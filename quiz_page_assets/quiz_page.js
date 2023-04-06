@@ -216,7 +216,7 @@ function renderNextQuestion(data, questionsAnswered) {
     answerArr = shuffleAnswers(answerArr);
     let answerContainer = $("<div>");
     answerContainer.addClass("answerContainer");
-    questionContainer.addClass("center wrapper " );
+    questionContainer.addClass("centerQuiz wrapper " );
     question.addClass("question")
     //turn the answer container the same color as the current question category
     answerContainer.addClass(
