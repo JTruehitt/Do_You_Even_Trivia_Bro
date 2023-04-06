@@ -4,6 +4,7 @@
 let triviaDisplay = $(".triviaDisplay");
 let gameBoard = $(".gameBoard");
 let userAnswer;
+let buttonClicked;
 let correctAnswer;
 let questionsAnswered = 0;
 let questionBank;
@@ -213,17 +214,32 @@ function renderNextQuestion(data, questionsAnswered) {
     answerArr = shuffleAnswers(answerArr);
     let answerContainer = $("<div>");
     answerContainer.addClass("answerContainer");
-
+    answerContainer.addClass("container");
+    let buttonRow1 = $("<div>");
+    let buttonRow2 = $("<div>");
+    buttonRow1.addClass("row");
+    buttonRow2.addClass("row");
+    answerContainer.append(buttonRow1);
+    answerContainer.append(buttonRow2);
     //turn the answer container the same color as the current question category
     answerContainer.addClass(
       categoryMap.get(currentGame.questionBank[questionsAnswered].category)
     );
 
-    for (let i = 0; i < answerArr.length; i++) {
+    for (let i = 0; i < 2; i++) {
       let answerBtn = $("<button>");
       answerBtn.text(answerArr[i]);
       answerBtn.addClass("answerBtn");
-      answerContainer.append(answerBtn);
+      answerBtn.addClass("col s6");
+      buttonRow1.append(answerBtn);
+    }
+
+    for (let i = 2; i < 4; i++) {
+      let answerBtn = $("<button>");
+      answerBtn.text(answerArr[i]);
+      answerBtn.addClass("answerBtn");
+      answerBtn.addClass("col s6");
+      buttonRow2.append(answerBtn);
     }
 
     question.text(data[questionsAnswered].question);
@@ -312,6 +328,7 @@ function endGame(winOrLose) {
 $(".triviaDisplay").on("click", ".answerBtn", (e) => {
   $(".answerBtn").attr("disabled", true);
   let userAnswer = $(e.target).text();
+  buttonClicked = $(e.target);
   checkAnswer(
     userAnswer,
     currentGame.questionBank[currentGame.questionsAnswered].category
@@ -331,6 +348,8 @@ function queryGiphy(query) {
     .then((res) => res.json())
     .then((data) => {
       renderGifs(data, query);
+      console.log(data);
+
     });
 }
 
@@ -339,13 +358,15 @@ function queryGiphy(query) {
 // reformats original query and renders this along with gif to page
 function renderGifs(data, query) {
   let gif = $("<img>");
-  let affirmation = $("<h2>");
+  //let affirmation = $("<h2>");
   let i = Math.floor(Math.random() * data.data.length);
   let gifURL = data.data[i].images.original.url;
   gif.attr("src", gifURL);
   gif.addClass("gifIMG");
-  affirmation.text(query.toUpperCase().split("-").join(" "));
-  triviaDisplay.append(affirmation, gif);
+  //affirmation.text(query.toUpperCase().split("-").join(" "));
+  buttonClicked.empty();
+  buttonClicked.css("background-image","url("+gifURL+")");
+  //buttonClicked.append(gif);
 }
 
 // function is called after answer is determined to be correct or incorrect

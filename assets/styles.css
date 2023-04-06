@@ -103,3 +103,19 @@ body {
    .resumeGameBtn {
     display: none;
    }
+
+   .answerBtn {
+    height: 27vh;
+   }
+
+   .answerContainer {
+    height:60vh;
+    padding:20px;
+    justify-content: space-around;
+   }
+
+   .gifIMG {
+    /* height: 23vh; */
+    z-index: 1;
+    object-fit: fill;
+   }
