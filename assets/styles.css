@@ -7,13 +7,15 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-color:  #ffe49e;
+    background-color: black;
   }
-
+ 
   main {
     flex: 1 0 auto;
   }
-
+  h1 {
+    text-align: center;
+  }
   /* * MODAL / Intake Form CSS */
 
   label {
@@ -68,35 +70,35 @@ body {
    }
 
    .film_and_tv {
-    background-color: orange;
+    background-color:#bf1313;
    }
 
    .food_and_drink {
-    background-color: yellow;
+    background-color: #84cfbc;
    }
 
    .general_knowledge {
-    background-color: green;
+    background-color: #e4db89;
    }
 
    .geography {
-    background-color: blue;
+    background-color: #0b4f0a ;
    }
 
    .history {
-    background-color: purple;
+    background-color: #8a3f0e;
    }
 
    .music {
-    background-color: pink;
+    background-color: #cf6017;
    }
 
    .science {
-    background-color: grey;
+    background-color: #6bfc3a;
    }
 
    .society_and_culture {
-    background-color: aqua;
+    background-color: #e7bd6f;
    }
 
    .sport_and_leisure {
@@ -324,3 +326,23 @@ body {
     font-style: italic;
     
   }
+ 
+   .animatedheadline {
+    background-color: yellow;
+    animation: fade-in 4s infinite;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      transform: scale(2);
+      opacity: 1;
+      background-color: #ea0b0bff;
+    }
+    20% {
+      transform: scale(1);
+      opacity: 0;
+      background-color: #f44336;
+    }
+
+  }
+  
