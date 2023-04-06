@@ -1,3 +1,7 @@
+:root {
+  --gold: #FFE49E;
+  --red: #ea0b0bff;
+}
 
 body {
     display: flex;
@@ -23,7 +27,7 @@ body {
   }
   
   .form-wrapper {
-    padding-inline: 4em;
+    padding-inline: 2em;
   }
   
   .checkbox-wrapper {
@@ -34,7 +38,7 @@ body {
   }
   
   .checkbox-wrapper > * {
-    min-inline-size: 25ch;
+    min-inline-size: 30ch;
   }
   
   .selectAllBtn {
@@ -106,6 +110,222 @@ body {
    .resumeGameBtn {
     display: none;
    }
+
+   /* Begin Finale Page Styling */
+   * {
+    background-color: var(--gold);
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+   }
+
+   .game-over {
+    background-image: url(../assets/images/yellow-brick-rd-finale.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+   }
+
+   .finale-title {
+    background-color: transparent;
+   }
+
+   .dynamic-message {
+    border-style: double;
+    border-width: 10px;
+    background-color: var(--red);
+    margin-bottom: 5px;
+   }
+
+   #user-message {
+    background-color: var(--red);
+    text-align: center;
+   }
+
+   .stats {
+    border-style: double;
+    border-width: 10px;
+    color: var(--red);
+    margin-bottom: 5px;
+   }
+
+   .stats-title {
+    color: var(--red);
+    text-align: center;
+   }
+
+   .restart-game {
+    border-style: double;
+    border-width: 10px;
+    background-color: var(--red);
+    margin-bottom: 5px;
+   }
+
+    .restart-question {
+    background-color: var(--red);
+    text-align: center;
+    }
+
+    .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
+    }
+
+    button {
+      font-family: 'Press Start 2P', cursive;
+    }
+    
+    .restart-btn {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      background-color: var(--gold) !important;
+      color: var(--red) !important;
+
+    }
+
+    .quit-btn {
+      margin-bottom: 15px;
+      background-color: var(--gold) !important;
+      color: var(--red) !important;
+    }
+
+   .stats-placeholder {
+    display: block;
+    height: 500px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 25px;
+   }
+
+   .leaderboard {
+    border-style: double;
+    border-width: 10px;
+    color: var(--red);
+   }
+
+   .leader-title {
+    color: var(--red);
+    text-align: center;
+   }
+
+   .categoryProgressWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .progressBarContainer {
+    outline: 1px solid black;
+    height: 2rem;
+    border-radius: 100vmax;
+    width: 100%;
+    margin-block-start: .25rem;
+    text-align: center;
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+  }
+  
+  .progressBarInner {
+    width: 0;
+    height: 2rem;
+    border-radius: 100vmax;
+  }
+  
+  .region {
+    margin-block: 1em;
+  }
+  
+  .categoryLabel {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  span {
+    font-weight: bold;
+    /* font-size: 1.25rem; */
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .stack > * {
+    margin-block: 0;
+  }
+  
+  .stack > * + * {
+    margin-block-start: 1.5rem;
+  }
+
+  .categoryProgressDisplay {
+    min-inline-size: clamp(20ch, 50%, 55ch);
+  }
+
+  .categoryLabel {
+    padding-inline: 1em;
+  }
+
+  .levelUpDisplay {
+    justify-self: center;
+    align-self: center;
+    z-index: 2;
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    
+  }
+   /* End Finale Page Styling */
+
+   .wrapper {
+    padding-inline: 4em;
+    padding-block: 2em;
+    /* border: 3px solid; */
+    border-radius: 20px;
+  }
+  .center {
+    box-sizing: content-box;
+    margin-inline: auto;
+    /* max-inline-size: 70ch; */
+  }
+  .answerContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: flex-start; */
+   padding-block : 2em;
+    gap: 1em;
+  }
+  .answerContainer > * {
+    min-inline-size: 45%;
+    padding: 1.25em;
+    border-radius: 15px;
+    flex: 0;
+    transition: 250ms ease-in-out;
+    min-block-size: 30vh;
+  }
+  .answerContainer > *:hover {
+    transform: scale(1.1);
+  }
+  .question{
+    font-size: 1.5em;
+    background-color: #ffe49e;
+  }
+.answerBtn {
+  background-color: #ea0b0bff;
+  font-style: italic;
+  font-size: large;
+  
+  }
+  .center-align{
+    font-style: italic;
+    
+  }
  
    .animatedheadline {
     background-color: yellow;
