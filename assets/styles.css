@@ -41,11 +41,17 @@ body {
   .selectAllBtn {
     margin-block-end: 1em;
   }
-  .startBtnWrapper {
+  .mainPageBtnWrapper {
     display: flex;
+    flex-direction: column;
+    gap: 1em;
     justify-content: center;
     align-items: center;
     height: 100vh;
+  }
+
+  .mainPageBtnWrapper > * {
+    min-inline-size: 30ch;
   }
   
   .modal {
@@ -94,6 +100,12 @@ body {
 
    .sport_and_leisure {
     background-color: teal;
+   }
+
+   /*  */
+
+   .resumeGameBtn {
+    display: none;
    }
 
    /* Begin Finale Page Styling */
