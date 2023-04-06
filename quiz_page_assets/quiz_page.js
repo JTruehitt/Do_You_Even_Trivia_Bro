@@ -9,7 +9,7 @@ let questionsAnswered = 0;
 let questionBank;
 let userScore = 0;
 let userSelections = {};
-var gameBoardArray = [];
+let gameBoardArray = [];
 let gameBoardText = [];
 let playerOnePosition = -1;
 
@@ -42,7 +42,6 @@ function queryTAPI() {
   currentGame.userSelections.categories = location.search.split("?")[1];
   currentGame.userSelections.number = location.search.split("?")[2];
   currentGame.userSelections.difficulty = location.search.split("?")[3];
-  console.log(currentGame);
   let queryURL =
     "https://the-trivia-api.com/api/questions?" +
     currentGame.userSelections.categories +
@@ -50,12 +49,17 @@ function queryTAPI() {
     "&region=US" +
     currentGame.userSelections.difficulty;
 
-  console.log(queryURL);
   fetch(queryURL)
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        console.log("There was an error getting questions from tAPI");
+      }
+    })
     .then((data) => {
-      currentGame.questionBank = data;
       console.log(data);
+      currentGame.questionBank = data;
       renderNextQuestion(data, currentGame.questionsAnswered);
     });
 }
@@ -65,7 +69,6 @@ function queryTAPI() {
 //7 questions >> 24 tiles
 //20 questions >> 60 tiles
 function renderBoard() {
-  console.log(currentGame.playerOnePosition);
   //erase the old board
   gameBoard.empty();
 
@@ -232,9 +235,8 @@ function renderNextQuestion(data, questionsAnswered) {
     triviaDisplay.append(questionContainer);
   }
 
-  //! Sending to local storage each time a question is rendered.
+  // Sending to local storage each time a question is rendered.
   localStorage.setItem("currentGame", JSON.stringify(currentGame));
-  console.log(localStorage);
 }
 
 // function that shuffles answers so the correct answer is not always the last one
@@ -262,6 +264,11 @@ function checkAnswer(userAnswer, category) {
     // console.log(category);
     // console.log(categoryMap.get(category));
     // console.log(gameBoardArray);
+    currentGame.questionBank[currentGame.questionsAnswered].userCorrect =
+      currentGame.questionBank[currentGame.questionsAnswered].category +
+      "+" +
+      currentGame.questionBank[currentGame.questionsAnswered].difficulty;
+    console.log(currentGame);
     for (
       let i = currentGame.playerOnePosition + 1;
       i < gameBoardArray.length;
@@ -270,21 +277,18 @@ function checkAnswer(userAnswer, category) {
       if (categoryMap.get(category) == gameBoardArray[i]) {
         currentGame.playerOnePosition = i;
         break;
-      } else if (i == gameBoardArray.length - 1) {
-        //YOU WIN!
-        console.log("oops");
-        endGame(true);
       }
     }
-    //! Replace this alert with something
-    // alert("yay, that's right");
+    if (currentGame.playerOnePosition == gameBoardArray.length - 1) {
+      console.log("hello");
+      setTimeout(function () {
+        endGame(true);
+      }, 3000);
+    }
     pickQuery(0);
-    // userScore += //need to figure out scoring mechanic
   } else {
-    //! Replace this alert with something
-    // alert("sorry, that's wrong");
+    currentGame.questionBank[currentGame.questionsAnswered].userCorrect = false;
     pickQuery(1);
-    // userScore -= //need to figure out scoring mechanic
   }
 
   currentGame.questionsAnswered++;
@@ -295,17 +299,16 @@ function checkAnswer(userAnswer, category) {
 
 // function that triggers end game and redirects to next screen
 function endGame(winOrLose) {
-  //! will need to sort this out and configure functionality once endgame page is made
-  //! set local storage to remove item now for testing. will need to connect to gameover page and and store local storage to pull there
-  // localStorage.setItem("currentGame", JSON.stringify(currentGame));
-  localStorage.removeItem("currentGame", JSON.stringify(currentGame));
   localStorage.removeItem("gameInProgress");
   if (winOrLose) {
-    triviaDisplay.text("YOU WIN!");
-    // location.assign("gameover_page_assets/gameover.html")
-  } else triviaDisplay.text("GAME OVER");
-  // location.assign("gameover_page_assets/gameover.html")
-  return;
+    currentGame.userWonGame = true;
+    localStorage.setItem("currentGame", JSON.stringify(currentGame));
+    location.assign("../gameover_page_assets/gameover.html");
+  } else {
+    currentGame.userWonGame = false;
+    localStorage.setItem("currentGame", JSON.stringify(currentGame));
+    location.assign("../gameover_page_assets/gameover.html");
+  }
 }
 
 // event delegation for the main display that will trigger on click of an answerBtn, take the text of the target, and pass it to the checkAnswer function
@@ -328,7 +331,13 @@ function queryGiphy(query) {
   let rating = "&rating=pg-13";
 
   fetch(baseURL + apiKey + rating + "&q=" + query)
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        console.log("There was a problem pulling giphs from GIPHY");
+      }
+    })
     .then((data) => {
       renderGifs(data, query);
     });
@@ -351,7 +360,6 @@ function renderGifs(data, query) {
 // function is called after answer is determined to be correct or incorrect
 // random word from predefined arrays is selected and fed into the queryGiphy function
 function pickQuery(result) {
-  // ! i just came up with these for a bit of diversity. we can change/add more if we like
   const correct = ["correct", "yes", "way-to-go", "good-job"];
   const incorrect = ["wrong", "no", "no-way", "nope"];
   let r = Math.floor(Math.random() * correct.length);
@@ -366,7 +374,6 @@ function pickQuery(result) {
 
 function loadPreviousGame() {
   let gameInProgress = localStorage.getItem("gameInProgress");
-  console.log(gameInProgress);
   if (gameInProgress) {
     currentGame = JSON.parse(localStorage.getItem("currentGame"));
     console.log(currentGame);
