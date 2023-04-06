@@ -5,26 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Over</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <!-- Import Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../assets/Materialize CSS and JS files/materialize.min.css"
+      media="screen,projection"
+    />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 <body>
+    <!-- Game over title with hero image -->
     <header class="game-over">
-    <h1>Your Trivia Quest Is Over Bro</h1>
-    <h2 id="user-message"></h2>
+    <!-- <h1 class="finale-title">Your Trivia Quest Is Over Bro</h1> -->
+    <!-- Curved game over title -->
+    <svg class="finale-title" viewBox="0 0 500 500">
+        <path id="curve" fill="transparent" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,110" />
+        <text fill="white" width="550">
+          <textPath xlink:href="#curve">
+            Your Trivia Quest Is Over Bro
+          </textPath>
+        </text>
+      </svg>
     </header>
 
-    <main>
-        <section>
-            <h3>Stats</h3>
+    <main class="main-content">
+        <!-- Dynamic user message -->
+        <section class="dynamic-message">
+            <h2 id="user-message"></h2>
         </section>
-
-        <section>
-            <p>Shall the quest continue?</p>
-            <button>Bring It On</button>
-            <button>I'll pass for now</button>
+        <!-- Game statistics -->
+        <section class="stats">
+            <h3 class="stats-title">Your Stats Bro</h3>
+            <!-- NOTE: Placeholder - Replace with real stats -->
+            <article>
+                <img class="stats-placeholder" src="../assets/images/statistics-placeholder.jpg" alt="Gaming Statistics Placeholder" />
+            </article>
         </section>
-
-        <section>
-            <h4>Leaderboard</h4>
+        <!-- Restart game question -->
+        <section class="restart-game">
+            <p class="restart-question">Will you continue your quest bro?</p>
+            <div class="center">
+                <a class="restart-btn btn-large">For Sure Bro</a>
+                <a class="quit-btn btn-large">Nah Bro</a>
+            <!-- <button class="restart-btn">For Sure Bro</button>
+            <button class="quit-btn">Nah Bro</button> -->
+            </div>
+        </section>
+        <!-- Leaderboard -->
+        <section class="leaderboard">
+            <h4 class="leader-title">Leaderboard</h4>
         </section>
     </main>
 

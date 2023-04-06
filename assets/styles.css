@@ -1,3 +1,7 @@
+:root {
+  --gold: #FFE49E;
+  --red: #ea0b0bff;
+}
 
 body {
     display: flex;
@@ -91,3 +95,104 @@ body {
    .sport_and_leisure {
     background-color: teal;
    }
+
+   /* Begin Finale Page Styling */
+   * {
+    background-color: var(--gold);
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+   }
+
+   .game-over {
+    background-image: url(../assets/images/yellow-brick-rd-finale.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+   }
+
+   .finale-title {
+    background-color: transparent;
+   }
+
+   .dynamic-message {
+    border-style: double;
+    border-width: 10px;
+    background-color: var(--red);
+    margin-bottom: 5px;
+   }
+
+   #user-message {
+    background-color: var(--red);
+    text-align: center;
+   }
+
+   .stats {
+    border-style: double;
+    border-width: 10px;
+    color: var(--red);
+    margin-bottom: 5px;
+   }
+
+   .stats-title {
+    color: var(--red);
+    text-align: center;
+   }
+
+   .restart-game {
+    border-style: double;
+    border-width: 10px;
+    background-color: var(--red);
+    margin-bottom: 5px;
+   }
+
+    .restart-question {
+    background-color: var(--red);
+    text-align: center;
+    }
+
+    .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red);
+    }
+
+    button {
+      font-family: 'Press Start 2P', cursive;
+    }
+    
+    .restart-btn {
+      margin-right: 15px;
+      margin-bottom: 15px;
+      background-color: var(--gold) !important;
+      color: var(--red) !important;
+
+    }
+
+    .quit-btn {
+      margin-bottom: 15px;
+      background-color: var(--gold) !important;
+      color: var(--red) !important;
+    }
+
+   .stats-placeholder {
+    display: block;
+    height: 500px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 25px;
+   }
+
+   .leaderboard {
+    border-style: double;
+    border-width: 10px;
+    color: var(--red);
+   }
+
+   .leader-title {
+    color: var(--red);
+    text-align: center;
+   }
+   /* End Finale Page Styling */
