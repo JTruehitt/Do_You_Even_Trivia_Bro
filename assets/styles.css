@@ -3,12 +3,15 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-color: black;
   }
-
+ 
   main {
     flex: 1 0 auto;
   }
-
+  h1 {
+    text-align: center;
+  }
   /* * MODAL / Intake Form CSS */
 
   label {
@@ -103,3 +106,23 @@ body {
    .resumeGameBtn {
     display: none;
    }
+ 
+   .animatedheadline {
+    background-color: yellow;
+    animation: fade-in 4s infinite;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      transform: scale(2);
+      opacity: 1;
+      background-color: #ea0b0bff;
+    }
+    20% {
+      transform: scale(1);
+      opacity: 0;
+      background-color: #f44336;
+    }
+
+  }
+  
