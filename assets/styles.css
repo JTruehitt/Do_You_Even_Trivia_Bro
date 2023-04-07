@@ -373,11 +373,15 @@ body {
     color: #ffff00;
   }
   .tile{
-    height: 4vh; 
+    height: 4vh;
+    text-align: center; 
+    line-height: 4vh;
   }
 
   .tileThin{
     height: 2.5vh;
+    text-align: center;
+    line-height: 2.5vh;
   }
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{

@@ -115,6 +115,12 @@ function renderBoard() {
       tile.text(gameBoardText[i]);
       row2.append(tile);
     }
+
+    //make the first tile say "START" and the last tile say "FINISH"
+    gameBoard.children().children()[0].textContent="START";
+    gameBoard.children().children()[23].textContent="FINISH";
+    //TODO: maybe color the last tile rainbow somehow
+
   } else if (numberOfQuestions == 20) {
     //long board
 
