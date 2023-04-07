@@ -321,7 +321,7 @@ body {
     border-radius: 15px;
     flex: 0;
     transition: 250ms ease-in-out;
-    min-block-size: 20vh;
+    min-block-size: 17vh;
     /* font-size: 5rem; */
   }
   .answerContainer > *:hover {
@@ -373,7 +373,11 @@ body {
     color: #ffff00;
   }
   .tile{
-    height: 4vh;
+    height: 4vh; 
+  }
+
+  .tileThin{
+    height: 2.5vh;
   }
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{

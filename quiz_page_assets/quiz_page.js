@@ -150,7 +150,7 @@ function renderBoard() {
     for (let i = 0; i < 12; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1 tile");
+      tile.addClass("col s1 tileThin");
       tile.text(gameBoardText[i]);
       row1.append(tile);
     }
@@ -159,7 +159,7 @@ function renderBoard() {
     for (let i = 12; i < 24; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1 tile");
+      tile.addClass("col s1 tileThin");
       tile.text(gameBoardText[i]);
       row2.append(tile);
     }
@@ -168,7 +168,7 @@ function renderBoard() {
     for (let i = 24; i < 36; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1 tile");
+      tile.addClass("col s1 tileThin");
       tile.text(gameBoardText[i]);
       row3.append(tile);
     }
@@ -177,7 +177,7 @@ function renderBoard() {
     for (let i = 36; i < 48; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1 tile");
+      tile.addClass("col s1 tileThin");
       tile.text(gameBoardText[i]);
       row4.append(tile);
     }
@@ -186,7 +186,7 @@ function renderBoard() {
     for (let i = 48; i < 60; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1 tile");
+      tile.addClass("col s1 tileThin");
       tile.text(gameBoardText[i]);
       row5.append(tile);
     }
