@@ -1,5 +1,5 @@
 :root {
-  --gold: #FFE49E;
+  --gold: black;
   --red: #ea0b0bff;
 }
 
@@ -43,6 +43,11 @@ body {
   
   .selectAllBtn {
     margin-block-end: 1em;
+    background-color: #ffff00;
+    color:black;
+  }
+  .selectAllBtn:hover{
+    background-color: var(--red);
   }
   .mainPageBtnWrapper {
     display: flex;
@@ -51,10 +56,18 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: black;
+    
   }
 
   .mainPageBtnWrapper > * {
     min-inline-size: 30ch;
+    background-color: #ffff00;
+    color: black;
+
+  }
+  .mainPageBtnWrapper > *:hover{
+    background-color:var(--red);
   }
   
   .modal {
@@ -66,7 +79,7 @@ body {
    /*Game Board Styling */
 
    .arts_and_literature {
-      background-color:#bd8ff2;
+      background-color:#bd8ff2; 
    }
 
    .film_and_tv {
@@ -300,14 +313,16 @@ body {
     /* align-items: flex-start; */
    padding-block : 2em;
     gap: 1em;
+    padding-inline: 2em;
   }
   .answerContainer > * {
-    min-inline-size: 45%;
+    min-inline-size: 30%;
     padding: 1.25em;
     border-radius: 15px;
     flex: 0;
     transition: 250ms ease-in-out;
-    min-block-size: 30vh;
+    min-block-size: 20vh;
+    /* font-size: 5rem; */
   }
   .answerContainer > *:hover {
     transform: scale(1.1);
@@ -317,10 +332,10 @@ body {
     background-color: #ea0b0bff;
   }
 .answerBtn {
-  background-color: #FFE49E;
-  font-style: italic;
-  font-size: large;
-  
+  /* background-color: #FFE49E; */
+  font-family:'Press Start 2P';
+  font-size: 1.5rem;
+  outline:2px solid yellow;
   }
   .center-align{
     font-style: italic;
@@ -345,4 +360,29 @@ body {
     }
 
   }
-  
+  .sticky{
+    position: sticky;
+    bottom: 0px;
+    background-color: black;
+  }
+  #quizHeader{
+    background-color: black;
+  }
+  .quizPageHeader{
+    background-color: black;
+    color: #ffff00;
+  }
+  .tile{
+    height: 4vh;
+  }
+ 
+  [type="checkbox"].filled-in:checked+span:not(.lever):after{
+    background-color:var(--red);
+  }
+  .submitUserSelectionsBtn{
+    background-color:#ffff00;
+    color:black;
+  }
+  .submitUserSelectionsBtn:hover{
+    background-color:var(--red);
+  }
