@@ -264,32 +264,36 @@ function shuffleAnswers(answers) {
 // adjusts score as needed
 // increases questionsAnswered number and passes back to render next question to determine how to proceed
 function checkAnswer(userAnswer, category) {
-  if (userAnswer === correctAnswer) {
-    //update player position based on the category of the current question
-    //get the category of the question just answered
-    //for gameBoard, find the next tile that matches the current category
-    // console.log("Player position: "+playerOnePosition);
-    // console.log("GameBoard length: " + gameBoardArray.length);
-    // console.log(category);
-    // console.log(categoryMap.get(category));
-    // console.log(gameBoardArray);
+  if (userAnswer === correctAnswer) { //the player answered correctly, so they advance or win the game
+    
+    //This is important for tracking stats with the progress tracker
     currentGame.questionBank[currentGame.questionsAnswered].userCorrect =
       currentGame.questionBank[currentGame.questionsAnswered].category +
       "+" +
       currentGame.questionBank[currentGame.questionsAnswered].difficulty;
-    console.log(currentGame);
+    
+    let didPlayerAdvance = false; //this boolean keeps track of whether the player has any more room on the board to advance
     for (
       let i = currentGame.playerOnePosition + 1;
       i < gameBoardArray.length;
       i++
     ) {
-      if (categoryMap.get(category) == gameBoardArray[i]) {
-        currentGame.playerOnePosition = i;
+      //get the category of the question just answered
+      if (categoryMap.get(category) == gameBoardArray[i]) { //advance player One to next tile matching current category
+        currentGame.playerOnePosition = i; //update player position based on the category of the current question
+        didPlayerAdvance = true; //there was space to advance, so the game is not over yet!
         break;
       }
     }
-    if (currentGame.playerOnePosition == gameBoardArray.length - 1) {
-      console.log("hello");
+    if (!didPlayerAdvance) { //if there is no space left to advance, then trigger the endgame
+      currentGame.playerOnePosition = gameBoardArray.length -1; //move the player to the last tile
+      renderBoard(); //render the gameboard to show the player on the last tile
+      setTimeout(function () { //wait 3 seconds, then call endGame() function
+        endGame(true);
+      }, 3000);
+    }
+    if (currentGame.playerOnePosition == gameBoardArray.length - 1) {  //if the player lands exactly on the last tile, they win...delete this?
+      console.log("Landed exactly on the last tile!");
       setTimeout(function () {
         endGame(true);
       }, 3000);
