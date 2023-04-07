@@ -304,6 +304,7 @@ body {
   .centerQuiz {
     box-sizing: content-box;
     margin-inline: auto;
+    padding-top: 0px;
     /* max-inline-size: 70ch; */
   }
   .answerContainer {
@@ -314,6 +315,8 @@ body {
    padding-block : 2em;
     gap: 1em;
     padding-inline: 2em;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
   .answerContainer > * {
     min-inline-size: 30%;
@@ -382,6 +385,10 @@ body {
     height: 2.5vh;
     text-align: center;
     line-height: 2.5vh;
+  }
+
+  .rowThin {
+    margin-bottom: 10px !important;
   }
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{
