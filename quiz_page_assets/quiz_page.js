@@ -12,6 +12,7 @@ let userSelections = {};
 let gameBoardArray = [];
 let gameBoardText = [];
 let playerOnePosition = -1;
+let buttonClicked;
 
 let categoryMap = new Map([
   ["Arts & Literature", "arts_and_literature"],
@@ -141,11 +142,11 @@ function renderBoard() {
     var row3 = $("<div>");
     var row4 = $("<div>");
     var row5 = $("<div>");
-    row1.addClass("row");
-    row2.addClass("row");
-    row3.addClass("row");
-    row4.addClass("row");
-    row5.addClass("row");
+    row1.addClass("row rowThin");
+    row2.addClass("row rowThin");
+    row3.addClass("row rowThin");
+    row4.addClass("row rowThin");
+    row5.addClass("row rowThin");
     gameBoard.append(row1);
     gameBoard.append(row2);
     gameBoard.append(row3);
@@ -196,6 +197,10 @@ function renderBoard() {
       tile.text(gameBoardText[i]);
       row5.append(tile);
     }
+
+    //make the first tile say "START" and the last tile say "FINISH"
+    gameBoard.children().children()[0].textContent="START";
+    gameBoard.children().children()[59].textContent="FINISH";
   }
 }
 
@@ -334,6 +339,7 @@ function endGame(winOrLose) {
 $(".triviaDisplay").on("click", ".answerBtn", (e) => {
   $(".answerBtn").attr("disabled", true);
   let userAnswer = $(e.target).text();
+  buttonClicked = $(e.target);
   checkAnswer(
     userAnswer,
     currentGame.questionBank[currentGame.questionsAnswered].category
@@ -367,13 +373,15 @@ function queryGiphy(query) {
 // reformats original query and renders this along with gif to page
 function renderGifs(data, query) {
   let gif = $("<img>");
-  let affirmation = $("<h2>");
+  let affirmation = $("<h4>");
   let i = Math.floor(Math.random() * data.data.length);
   let gifURL = data.data[i].images.original.url;
   gif.attr("src", gifURL);
   gif.addClass("gifIMG");
   affirmation.text(query.toUpperCase().split("-").join(" "));
-  triviaDisplay.append(affirmation, gif);
+  triviaDisplay.append(affirmation);
+  buttonClicked.empty() //erase the text of the answer inside the button
+  buttonClicked.css("background-image", "url("+gifURL+")");
 }
 
 // function is called after answer is determined to be correct or incorrect
