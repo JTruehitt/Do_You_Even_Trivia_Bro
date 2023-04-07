@@ -94,8 +94,8 @@ function renderBoard() {
     //create two rows of 12
     var row1 = $("<div>");
     var row2 = $("<div>");
-    row1.addClass("row");
-    row2.addClass("row");
+    row1.addClass("row rowThin");
+    row2.addClass("row rowThin");
     gameBoard.append(row1);
     gameBoard.append(row2);
 
