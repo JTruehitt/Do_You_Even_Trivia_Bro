@@ -390,6 +390,12 @@ body {
   .rowThin {
     margin-bottom: 10px !important;
   }
+
+  .playerOneHero {
+    position:relative;
+    bottom: 4em;
+    background: rgba(0,0,0,0);
+  }
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{
     background-color:var(--red);
