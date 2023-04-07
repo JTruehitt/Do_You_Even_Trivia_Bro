@@ -86,7 +86,7 @@ function renderBoard() {
     }
     gameBoardArray.length = 24;
     for (i = 0; i < gameBoardArray.length; i++) {
-      gameBoardText[i] = "&&&"; //reset all game board tiles to placeholder text
+      gameBoardText[i] = ""; //reset all game board tiles to placeholder text
     }
     gameBoardText[currentGame.playerOnePosition] = "😊";
 
@@ -102,7 +102,7 @@ function renderBoard() {
     for (let i = 0; i < 12; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row1.append(tile);
     }
@@ -111,7 +111,7 @@ function renderBoard() {
     for (let i = 12; i < 24; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row2.append(tile);
     }
@@ -125,7 +125,7 @@ function renderBoard() {
     }
     gameBoardArray.length = 60;
     for (i = 0; i < gameBoardArray.length; i++) {
-      gameBoardText[i] = "&&&"; //reset all game board tiles to placeholder text
+      gameBoardText[i] = ""; //reset all game board tiles to placeholder text
     }
     gameBoardText[currentGame.playerOnePosition] = "😊";
 
@@ -150,7 +150,7 @@ function renderBoard() {
     for (let i = 0; i < 12; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row1.append(tile);
     }
@@ -159,7 +159,7 @@ function renderBoard() {
     for (let i = 12; i < 24; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row2.append(tile);
     }
@@ -168,7 +168,7 @@ function renderBoard() {
     for (let i = 24; i < 36; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row3.append(tile);
     }
@@ -177,7 +177,7 @@ function renderBoard() {
     for (let i = 36; i < 48; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row4.append(tile);
     }
@@ -186,7 +186,7 @@ function renderBoard() {
     for (let i = 48; i < 60; i++) {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
-      tile.addClass("col s1");
+      tile.addClass("col s1 tile");
       tile.text(gameBoardText[i]);
       row5.append(tile);
     }
@@ -200,6 +200,8 @@ function renderBoard() {
 function renderNextQuestion(data, questionsAnswered) {
   triviaDisplay.empty();
   renderBoard();
+  
+  
 
   if (questionsAnswered == data.length) {
     return endGame(false);
@@ -209,6 +211,9 @@ function renderNextQuestion(data, questionsAnswered) {
     correctAnswer = data[questionsAnswered].correctAnswer;
     let wrongAnswers = data[questionsAnswered].incorrectAnswers;
     let answerArr = [];
+    // we gonna add catergory title to the quiz page header
+    var quizPageHeader = $(".quizPageHeader");
+  quizPageHeader.text(data[questionsAnswered].category);
     for (let i = 0; i < wrongAnswers.length; i++) {
       answerArr.push(wrongAnswers[i]);
     }
@@ -219,16 +224,18 @@ function renderNextQuestion(data, questionsAnswered) {
     questionContainer.addClass("centerQuiz wrapper " );
     question.addClass("question")
     //turn the answer container the same color as the current question category
-    answerContainer.addClass(
-      categoryMap.get(currentGame.questionBank[questionsAnswered].category)
-    );
+    // answerContainer.addClass(
+      // categoryMap.get(currentGame.questionBank[questionsAnswered].category)
+    // );
 
     for (let i = 0; i < answerArr.length; i++) {
       let answerBtn = $("<button>");
+      answerBtn.addClass(categoryMap.get(currentGame.questionBank[questionsAnswered].category));
       answerBtn.text(answerArr[i]);
       answerBtn.addClass("answerBtn z-depth-5");
       answerContainer.append(answerBtn);
-      
+      // answerBtn.addClass(categoryMap.get(currentGame.questionBank[questionsAnswered].category));
+  
     }
 
     question.text(data[questionsAnswered].question);
