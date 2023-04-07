@@ -27,7 +27,7 @@ body {
   }
   
   .form-wrapper {
-    padding-inline: 2em;
+    padding-inline: 6em;
   }
   
   .checkbox-wrapper {
@@ -385,4 +385,10 @@ body {
   }
   .submitUserSelectionsBtn:hover{
     background-color:var(--red);
+  }
+
+  select {
+    background-color: #ffff00;
+    color: black;
+    font-family: inherit;
   }
