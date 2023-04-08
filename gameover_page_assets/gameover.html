@@ -50,7 +50,7 @@
         <h3 class="stats-title">Your Stats Bro</h3>
         <!-- NOTE: Placeholder - Replace with real stats -->
         <div class="categoryProgressWrapper stack region">
-          <h4>Category Progress</h4>
+          <h5>Category Progress</h5>
 
           <div class="categoryProgressDisplay stack">
             <div class="category1">
@@ -226,14 +226,39 @@
         <p class="restart-question">Will you continue your quest bro?</p>
         <div class="center">
           <a href="../index.html" class="restart-btn btn-large">For Sure Bro</a>
-          <a class="quit-btn btn-large">Nah Bro</a>
+          <!-- <a class="quit-btn btn-large">Nah Bro</a> -->
           <!-- <button class="restart-btn">For Sure Bro</button>
             <button class="quit-btn">Nah Bro</button> -->
         </div>
       </section>
       <!-- Leaderboard -->
       <section class="leaderboard">
-        <h4 class="leader-title">Leaderboard</h4>
+        <h5 class="leader-title">Lifetime Stats</h5>
+        <div class="statsDisplay">
+          <div class="winsContainer stats-display">
+            <label class="categoryLabel">
+              <p>Total Games Played: </span><span class="totalGames"></span>
+            </label>
+            <label class="categoryLabel">
+              <p>Total Wins: </p><span class="totalWins"></span>
+            </label>
+            <label class="categoryLabel">
+              <p>Total Losses: </p><span class="totalLosses"></span>
+            </label>
+            <label class="categoryLabel">
+              <p>Win Percentage: </p><span class="winPercentage"></span>
+            </label>
+          </div>
+          <div class="questionsContainer">
+            <label class="categoryLabel">
+              <p>Total Questions Answered: </p><span class="totalQuestions"></span>
+            </label>
+            <label class="categoryLabel"><p>Total Correct: </p><span class="totalCorrect"></span></label>
+            <label class="categoryLabel"><p>Total Incorrect: </p><span class="totalIncorrect"></span></label>
+            <label class="categoryLabel"><p>Correct Percentage: </p><span class="correctPercentage"></span></label>
+          </div>
+          <div class="categoryBreakdown"></div>
+        </div>
       </section>
     </main>
 
