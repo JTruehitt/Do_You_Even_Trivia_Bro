@@ -5,9 +5,9 @@ var userMessage = $("#user-message");
 
 function determineOutcome(currentGame) {
   if (currentGame.userWonGame) {
-    userMessage.text("You're on a roll Bro!");
+    userMessage.text("You're on a roll bro!");
   } else {
-    userMessage.text("Oh snap! Better luck next time Bro");
+    userMessage.text("Oh snap! Better luck next time bro");
   }
   dynamicSection.append(userMessage);
 }
