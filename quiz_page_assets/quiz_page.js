@@ -286,9 +286,16 @@ function shuffleAnswers(answers) {
 // adjusts score as needed
 // increases questionsAnswered number and passes back to render next question to determine how to proceed
 function checkAnswer(userAnswer, category) {
-  if (userAnswer === correctAnswer) { //the player answered correctly, so they advance or win the game
-    
 
+  //checks which button has the correct answer and assigns the appropriate class. 
+  $(".answerBtn").each(function() {
+    if ($(this).text() == correctAnswer) {
+      $(this).addClass("correctAnswer");
+    } else {
+      $(this).addClass("wrongAnswer");
+    }
+  })
+  if (userAnswer === correctAnswer) { //the player answered correctly, so they advance or win the game
     //This is important for tracking stats with the progress tracker
     currentGame.questionBank[currentGame.questionsAnswered].userCorrect =
       currentGame.questionBank[currentGame.questionsAnswered].category +
@@ -396,7 +403,7 @@ function renderGifs(data, query) {
   affirmation.text(query.toUpperCase().split("-").join(" "));
   //triviaDisplay.append(affirmation);
   buttonClicked.empty() //erase the text of the answer inside the button
-  buttonClicked.css("background-image", "url("+gifURL+")");
+  buttonClicked.css({"background-image": "url("+gifURL+")", "background-position": "center"});
 }
 
 // function is called after answer is determined to be correct or incorrect

@@ -76,6 +76,7 @@ body {
   
   .modal {
     max-inline-size: 60ch;
+    border: 3px solid #ffff00;
   }
 
    /* * MODAL / Intake Form CSS END */
@@ -200,8 +201,7 @@ body {
     }
     
     .restart-btn {
-      margin-right: 15px;
-      margin-bottom: 15px;
+      margin-block-end: 1em;
       background-color: var(--gold) !important;
       color: var(--red) !important;
 
@@ -226,6 +226,9 @@ body {
     border-style: double;
     border-width: 10px;
     color: var(--red);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
    }
 
    .leader-title {
@@ -240,7 +243,7 @@ body {
    }
 
    .progressBarContainer {
-    outline: 1px solid black;
+    outline: 1px solid white;
     height: 2rem;
     border-radius: 100vmax;
     width: 100%;
@@ -264,6 +267,7 @@ body {
   .categoryLabel {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   
   span {
@@ -286,11 +290,11 @@ body {
   }
 
   .categoryProgressDisplay {
-    min-inline-size: clamp(20ch, 50%, 55ch);
+    min-inline-size: clamp(20ch, 80%, 55ch);
   }
 
   .categoryLabel {
-    padding-inline: 1em;
+    padding-inline: 2em;
   }
 
   .levelUpDisplay {
@@ -322,18 +326,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* align-items: flex-start; */
-   padding-block : 2em;
-    gap: 1em;
-    padding-inline: 2em;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    gap: 2em;
+    /* padding-inline: 2em; */
+    padding-block-start: 2em;
   }
   .answerContainer > * {
-    min-inline-size: 30%;
-    padding: 1.25em;
+    min-inline-size: 45%;
+    padding-block: 1.25em;
     border-radius: 15px;
-    flex: 0;
+    flex: 1 1;
     transition: 250ms ease-in-out;
     min-block-size: 17vh;
     /* font-size: 5rem; */
@@ -345,15 +346,11 @@ body {
     font-size: 1.5em;
     background-color: #ea0b0bff;
   }
+
 .answerBtn {
-  /* background-color: #FFE49E; */
   font-family:'Press Start 2P';
   font-size: 1.5rem;
   outline:2px solid yellow;
-  }
-  .center-align{
-    /* font-style: italic; */
-    
   }
  
    .animatedheadline {
@@ -427,12 +424,21 @@ body {
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{
     background-color:var(--red);
+    border: 1px solid #ffff00;
   }
-  .submitUserSelectionsBtn{
+  .submitUserSelectionsBtn,
+  .proceedWithNewGameBtn {
     background-color:#ffff00;
     color:black;
   }
-  .submitUserSelectionsBtn:hover{
+  .submitUserSelectionsBtn:hover,
+  .proceedWithNewGameBtn:hover,
+  .proceedWithNewGameBtn:focus,
+  .startGameBtn:focus,
+  .resumeGameBtn:focus,
+  .selectAllBtn:focus,
+  .submitUserSelectionsBtn:focus,
+  .modal-close:active {
     background-color:var(--red);
   }
 
@@ -440,4 +446,21 @@ body {
     background-color: #ffff00;
     color: black;
     font-family: inherit;
+  }
+
+  .stats-display {
+    display: flex;
+    flex-direction: column;
+    max-inline-size: 55ch;
+  }
+
+  .correctAnswer {
+    border: 5px solid green;
+    outline: 5px solid green;
+  }
+
+  .wrongAnswer {
+    border: 5px solid red;
+    outline: 5px solid red;
+    opacity: 75%;
   }
