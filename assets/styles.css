@@ -128,6 +128,10 @@ body {
     padding-right: 1.5vw;
    }
 
+   .z-front {
+    z-index: 1;
+   }
+
    /*  */
 
    .resumeGameBtn {

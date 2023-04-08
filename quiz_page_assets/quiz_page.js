@@ -310,12 +310,8 @@ function checkAnswer(userAnswer, category) {
     ) {
       //get the category of the question just answered
       if (categoryMap.get(category) == gameBoardArray[i]) { //advance player One to next tile matching current category
-        console.log(gameBoardArray[i]);
         currentGame.playerOnePosition = i; //update player position based on the category of the current question
-        console.log(i);
-        console.log(currentGame.playerOnePosition);
         didPlayerAdvance = true; //there was space to advance, so the game is not over yet!
-        console.log("inside if statement");
         break;
       }
     }
@@ -403,6 +399,7 @@ function renderGifs(data, query) {
   affirmation.text(query.toUpperCase().split("-").join(" "));
   //triviaDisplay.append(affirmation);
   buttonClicked.empty() //erase the text of the answer inside the button
+  buttonClicked.addClass("z-front"); //bring the clicked button to the front
   buttonClicked.css({"background-image": "url("+gifURL+")", "background-position": "center"});
 }
 
