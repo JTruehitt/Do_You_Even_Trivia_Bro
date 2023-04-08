@@ -1,14 +1,27 @@
 var dynamicSection = $(".dynamic-message");
 var userMessage = $("#user-message");
-// Need to remove/replace
-// var input = window.prompt("Type 'win' or 'lose'");
+let winHistory;
 
+// determines the outcome of the game based on what value was passed in the currentgame object. 
+// checks for saved win history. if none present, creates the empty object, iterates as needed, and saves to locastorage. 
 function determineOutcome(currentGame) {
+  winHistory = JSON.parse(localStorage.getItem("winHistory"));
+
+  if (!winHistory) {
+    winHistory = {
+      total_wins: 0,
+      total_losses: 0,
+    };
+  }
   if (currentGame.userWonGame) {
     userMessage.text("You're on a roll bro!");
+    winHistory.total_wins++;
   } else {
     userMessage.text("Oh snap! Better luck next time bro");
+    winHistory.total_losses++;
   }
+  localStorage.setItem("winHistory", JSON.stringify(winHistory));
+  winHistory.total_games = winHistory.total_wins + winHistory.total_losses;
   dynamicSection.append(userMessage);
 }
 
@@ -36,10 +49,6 @@ function generateEmptyCategoryProgressStorage() {
     emptyCategoryProgressStorage[i].total_correct = 0;
     emptyCategoryProgressStorage[i].total_incorrect = 0;
   }
-
-  emptyCategoryProgressStorage.total_wins = 0;
-  emptyCategoryProgressStorage.total_losses = 0;
-
   return emptyCategoryProgressStorage;
 }
 
@@ -56,11 +65,6 @@ function getCurrentGame() {
 
   if (currentGame) {
     currentGame.questionBank.length = currentGame.questionsAnswered;
-    if (currentGame.userWonGame) {
-      categoryProgressStorage.total_wins++;
-    } else {
-      categoryProgressStorage.total_losses++;
-    }
     determineOutcome(currentGame);
     parseAnswers(currentGame, categoryProgressStorage);
   } else {
@@ -72,13 +76,13 @@ function getCurrentGame() {
 function parseAnswers(currentGame, categoryProgressStorage) {
   console.log(currentGame);
   console.log(categoryProgressStorage);
-  for (let i = 0; i < currentGame.questionBank.length - 2; i++) {
+  for (let i = 0; i < currentGame.questionBank.length; i++) {
     if (currentGame.questionBank[i].userCorrect) {
       let cat = currentGame.questionBank[i].userCorrect.split("+")[0];
       console.log(cat);
       let diff = currentGame.questionBank[i].userCorrect.split("+")[1];
       console.log(diff);
-      for (let j = 0; j < categoryProgressStorage.length - 2; j++) {
+      for (let j = 0; j < categoryProgressStorage.length; j++) {
         if (diff == "easy" && cat === categoryProgressStorage[j].category) {
           categoryProgressStorage[j].exp += 10;
           categoryProgressStorage[j].expGainedLastGame += 10;
@@ -100,7 +104,7 @@ function parseAnswers(currentGame, categoryProgressStorage) {
         }
       }
     } else {
-      for (let j = 0; j < categoryProgressStorage.length - 2; j++) {
+      for (let j = 0; j < categoryProgressStorage.length; j++) {
         let cat = currentGame.questionBank[i].category;
         if (cat === categoryProgressStorage[j].category) {
           categoryProgressStorage[j].total_incorrect++;
@@ -108,7 +112,7 @@ function parseAnswers(currentGame, categoryProgressStorage) {
       }
     }
   }
-  for (let i = 0; i < categoryProgressStorage.length - 2; i++) {
+  for (let i = 0; i < categoryProgressStorage.length; i++) {
     categoryProgressStorage[i].total_questions =
       categoryProgressStorage[i].total_correct +
       categoryProgressStorage[i].total_incorrect;
@@ -120,7 +124,7 @@ function parseAnswers(currentGame, categoryProgressStorage) {
 function determineTier(categoryProgressStorage) {
   let expLimit = [50, 100, 150, 200, 250];
 
-  for (let i = 0; i < categoryProgressStorage.length - 2; i++) {
+  for (let i = 0; i < categoryProgressStorage.length; i++) {
     if (categoryProgressStorage[i].tier === 0) {
       categoryProgressStorage[i].percent =
         (categoryProgressStorage[i].exp / expLimit[0]) * 100;
@@ -227,7 +231,7 @@ function determineTier(categoryProgressStorage) {
 
 // renders the updated progress bar based on the percentage towards next tier
 function renderProgress(categoryProgressStorage) {
-  for (let i = 0; i < categoryProgressStorage.length - 2; i++) {
+  for (let i = 0; i < categoryProgressStorage.length; i++) {
     cat = categoryProgressStorage[i].category;
     let percent = categoryProgressStorage[i].percent;
     $("[data-category='" + cat + "']").css("width", percent + "%");
@@ -236,29 +240,29 @@ function renderProgress(categoryProgressStorage) {
 }
 
 function renderStats(categoryProgressStorage) {
-  $(".totalGames").text(
-    categoryProgressStorage.total_wins + categoryProgressStorage.total_losses
-  );
-  $(".totalWins").text(categoryProgressStorage.total_wins);
-  $(".totalLosses").text(categoryProgressStorage.total_losses);
+  //sets basic stats held in winhistory savedata
+  $(".totalGames").text(winHistory.total_games);
+  $(".totalWins").text(winHistory.total_wins);
+  $(".totalLosses").text(winHistory.total_losses);
   $(".winPercentage").text(
-    (categoryProgressStorage.total_wins /
-      (categoryProgressStorage.total_wins +
-        categoryProgressStorage.total_losses)) *
-      100 +
-      "%"
+    ((winHistory.total_wins / winHistory.total_games) * 100).toFixed(2) + "%"
   );
 
+  //calculates total questions based on saved data per category
   let allTimeQuestions = 0;
   let allTimeCorrect = 0;
   let allTimeIncorrect = 0;
-  for (let i = 0; i < categoryProgressStorage.length - 2; i++) {
+  for (let i = 0; i < categoryProgressStorage.length; i++) {
     allTimeQuestions += categoryProgressStorage[i].total_questions;
     allTimeCorrect += categoryProgressStorage[i].total_correct;
     allTimeIncorrect += categoryProgressStorage[i].total_incorrect;
 
     let categoryBreakdown = $(".categoryBreakdown");
     let categoryStatContainer = $("<div>");
+    let div1 = $("<div>");
+    let div2 = $("<div>");
+    let div3 = $("<div>");
+    let div4 = $("<div>");
     cat = categoryProgressStorage[i].category;
     let catTotal = $("<p>");
     let catTotalNumber = $("<span>");
@@ -267,7 +271,8 @@ function renderStats(categoryProgressStorage) {
     let catTotalIncorrect = $("<p>");
     let catTotalIncorrectNumber = $("<span>");
     let catPercentage = $("<p>");
-    let catPercentageNumber = $("<span>");
+    let catPercenageNumber;
+    let catPercentageNumberDisplay = $("<span>");
 
     catTotal.text("Total Questions: ");
     catTotalNumber.text(categoryProgressStorage[i].total_questions);
@@ -276,31 +281,35 @@ function renderStats(categoryProgressStorage) {
     catTotalIncorrect.text("Total Incorrect :");
     catTotalIncorrectNumber.text(categoryProgressStorage[i].total_incorrect);
     catPercentage.text("Correct Percentage: ");
-    catPercentageNumber.text(
+    catPercenageNumber =
       (categoryProgressStorage[i].total_correct /
         categoryProgressStorage[i].total_questions) *
-        100 +
-        "%"
-    );
+      100;
+    if (!catPercenageNumber) {
+      catPercenageNumber = 0;
+    }
+    catPercentageNumberDisplay.text(catPercenageNumber.toFixed(2) + "%");
 
-    categoryStatContainer.append(
-      cat,
-      catTotal,
-      catTotalNumber,
-      catTotalCorrect,
-      catTotalCorrectNumber,
-      catTotalIncorrect,
-      catTotalIncorrectNumber,
-      catPercentage,
-      catPercentageNumber
-    );
+    div1.append(catTotal, catTotalNumber);
+    div2.append(catTotalCorrect, catTotalCorrectNumber);
+    div3.append(catTotalIncorrect, catTotalIncorrectNumber);
+    div4.append(catPercentage, catPercentageNumberDisplay);
+
+    div1.addClass("categoryLabel");
+    div2.addClass("categoryLabel");
+    div3.addClass("categoryLabel");
+    div4.addClass("categoryLabel");
+
+    categoryStatContainer.append(cat, div1, div2, div3, div4);
     categoryBreakdown.append(categoryStatContainer);
   }
 
   $(".totalQuestions").text(allTimeQuestions);
   $(".totalCorrect").text(allTimeCorrect);
   $(".totalIncorrect").text(allTimeIncorrect);
-  $(".correctPercentage").text((allTimeCorrect / allTimeQuestions) * 100 + "%");
+  $(".correctPercentage").text(
+    ((allTimeCorrect / allTimeQuestions) * 100).toFixed(2) + "%"
+  );
 }
 
 getCurrentGame();

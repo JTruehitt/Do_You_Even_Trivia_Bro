@@ -234,30 +234,32 @@
       <!-- Leaderboard -->
       <section class="leaderboard">
         <h5 class="leader-title">Lifetime Stats</h5>
-        <div class="statsDisplay">
+        <div class="statsDisplay categoryProgressDisplay stack">
           <div class="winsContainer stats-display">
-            <label class="categoryLabel">
-              <p>Total Games Played: </span><span class="totalGames"></span>
-            </label>
-            <label class="categoryLabel">
-              <p>Total Wins: </p><span class="totalWins"></span>
-            </label>
-            <label class="categoryLabel">
-              <p>Total Losses: </p><span class="totalLosses"></span>
-            </label>
-            <label class="categoryLabel">
-              <p>Win Percentage: </p><span class="winPercentage"></span>
-            </label>
+            
+              <div class="categoryLabel">
+                <p>Total Games Played: </p><span class="totalGames"></span>
+              </div>
+              <div class="categoryLabel">
+                <p>Total Wins: </p><span class="totalWins"></span>
+              </div>
+              <div class="categoryLabel">
+                <p>Total Losses: </p><span class="totalLosses"></span>
+              </div>
+              <div class="categoryLabel">
+                <p>Win Percentage: </p><span class="winPercentage"></span>
+              </div>
+            
           </div>
-          <div class="questionsContainer">
-            <label class="categoryLabel">
-              <p>Total Questions Answered: </p><span class="totalQuestions"></span>
-            </label>
-            <label class="categoryLabel"><p>Total Correct: </p><span class="totalCorrect"></span></label>
-            <label class="categoryLabel"><p>Total Incorrect: </p><span class="totalIncorrect"></span></label>
-            <label class="categoryLabel"><p>Correct Percentage: </p><span class="correctPercentage"></span></label>
+          <div class="questionsContainer stats-display">
+            
+            <div class="categoryLabel"><p>Total Questions Answered: </p><span class="totalQuestions"></span></div>
+            <div class="categoryLabel"><p>Total Correct: </p><span class="totalCorrect"></span></div>
+            <div class="categoryLabel"><p>Total Incorrect: </p><span class="totalIncorrect"></span></div>
+            <div class="categoryLabel"><p>Correct Percentage: </p><span class="correctPercentage"></span></div>
+
           </div>
-          <div class="categoryBreakdown"></div>
+          <div class="categoryBreakdown stack stats-display"></div>
         </div>
       </section>
     </main>
