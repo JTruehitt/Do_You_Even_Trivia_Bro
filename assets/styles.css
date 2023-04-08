@@ -30,6 +30,9 @@ body {
     padding-inline: 6em;
   }
   
+  #landingHero {
+    height: 30vh;
+  }
   .checkbox-wrapper {
     /* padding-inline: 4em; */
     display: flex;
@@ -49,13 +52,14 @@ body {
   .selectAllBtn:hover{
     background-color: var(--red);
   }
+
   .mainPageBtnWrapper {
     display: flex;
     flex-direction: column;
     gap: 1em;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 10vh;
     background-color: black;
     
   }
@@ -116,6 +120,11 @@ body {
 
    .sport_and_leisure {
     background-color: teal;
+   }
+
+   .gameBoard {
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
    }
 
    /*  */
@@ -305,6 +314,8 @@ body {
     box-sizing: content-box;
     margin-inline: auto;
     padding-top: 0px;
+    padding-left: 10vw;
+    padding-right:10vw;
     /* max-inline-size: 70ch; */
   }
   .answerContainer {
@@ -341,22 +352,26 @@ body {
   outline:2px solid yellow;
   }
   .center-align{
-    font-style: italic;
+    /* font-style: italic; */
     
   }
  
    .animatedheadline {
-    background-color: yellow;
-    animation: fade-in 4s infinite;
+    background-color: #ea0b0bff;
+    animation: fade-in 10s infinite;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top:3vh;
+    padding-bottom:2vh;
   }
   
   @keyframes fade-in {
     0% {
-      transform: scale(2);
+      transform: scale(1);
       opacity: 1;
-      background-color: #ea0b0bff;
+      /* background-color: #ea0b0bff; */
     }
-    20% {
+    50% {
       transform: scale(1);
       opacity: 0;
       background-color: #f44336;
@@ -389,6 +404,25 @@ body {
 
   .rowThin {
     margin-bottom: 10px !important;
+  }
+
+  .playerOneHero {
+    position:relative;
+    bottom: 4em;
+    background: rgba(0,0,0,0);
+  }
+
+  #wizard {
+    max-height: 17vh;
+    position: fixed;
+    right: 0;
+    top:0;
+    background: rgba(0,0,0,0);
+  }
+  #affirmation {
+    position: fixed;
+    right: 17vh;
+    top:7vh;
   }
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{
