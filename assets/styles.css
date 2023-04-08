@@ -157,6 +157,21 @@ body {
     background-color: transparent;
    }
 
+   #finaleHero {
+    position:absolute;
+    left: 33vw;
+    top:56.5vh;
+    background: rgba(0,0,0,0);
+    height: 25vh;
+   }
+
+   #finaleWizard {
+    position:absolute;
+    right:0;
+    background: rgba(0,0,0,0);
+    height: 25vh;
+   }
+
    .dynamic-message {
     border-style: double;
     border-width: 10px;
