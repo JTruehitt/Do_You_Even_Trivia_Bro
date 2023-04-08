@@ -426,6 +426,7 @@ body {
     position:relative;
     bottom: 4em;
     background: rgba(0,0,0,0);
+    height:10vh;
   }
 
   #wizard {
