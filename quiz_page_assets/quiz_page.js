@@ -13,6 +13,7 @@ let gameBoardArray = [];
 let gameBoardText = [];
 let playerOnePosition = 0;
 let buttonClicked;
+let affirmation = $("#affirmation");
 
 let categoryMap = new Map([
   ["Arts & Literature", "arts_and_literature"],
@@ -86,10 +87,12 @@ function renderBoard() {
       gameBoardArray = gameBoardArray.concat(boardCategories);
     }
     gameBoardArray.length = 24;
-    for (i = 0; i < gameBoardArray.length; i++) {
-      gameBoardText[i] = ""; //reset all game board tiles to placeholder text
+    
+    
+    // for (i = 0; i < gameBoardArray.length; i++) {
+    //   gameBoardText[i] = ""; //reset all game board tiles to placeholder text
       
-    }
+    // }
 
     //create two rows of 12
     var row1 = $("<div>");
@@ -104,7 +107,7 @@ function renderBoard() {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
       tile.addClass("col s1 tile");
-      tile.text(gameBoardText[i]);
+      //tile.text(gameBoardText[i]);
       row1.append(tile);
     }
 
@@ -113,7 +116,7 @@ function renderBoard() {
       var tile = $("<div>");
       tile.addClass(gameBoardArray[i]);
       tile.addClass("col s1 tile");
-      tile.text(gameBoardText[i]);
+      //tile.text(gameBoardText[i]);
       row2.append(tile);
     }
 
@@ -124,6 +127,7 @@ function renderBoard() {
 
     //add 8-bit character to gameboard
     gameBoard.children().children()[currentGame.playerOnePosition].innerHTML = "<img class='playerOneHero' src='../assets/images/hero.png'></img>";
+    
 
   } else if (numberOfQuestions == 20) {
     //long board
@@ -218,7 +222,7 @@ function renderBoard() {
 function renderNextQuestion(data, questionsAnswered) {
   triviaDisplay.empty();
   renderBoard();
-  
+  affirmation.text("");
   
 
   if (questionsAnswered == data.length) {
@@ -284,7 +288,6 @@ function shuffleAnswers(answers) {
 function checkAnswer(userAnswer, category) {
   if (userAnswer === correctAnswer) { //the player answered correctly, so they advance or win the game
     
-    console.log("called checkAnswer");
 
     //This is important for tracking stats with the progress tracker
     currentGame.questionBank[currentGame.questionsAnswered].userCorrect =
@@ -386,13 +389,12 @@ function queryGiphy(query) {
 // reformats original query and renders this along with gif to page
 function renderGifs(data, query) {
   let gif = $("<img>");
-  let affirmation = $("<h4>");
   let i = Math.floor(Math.random() * data.data.length);
   let gifURL = data.data[i].images.original.url;
   gif.attr("src", gifURL);
   gif.addClass("gifIMG");
   affirmation.text(query.toUpperCase().split("-").join(" "));
-  triviaDisplay.append(affirmation);
+  //triviaDisplay.append(affirmation);
   buttonClicked.empty() //erase the text of the answer inside the button
   buttonClicked.css("background-image", "url("+gifURL+")");
 }

@@ -305,6 +305,8 @@ body {
     box-sizing: content-box;
     margin-inline: auto;
     padding-top: 0px;
+    padding-left: 10vw;
+    padding-right:10vw;
     /* max-inline-size: 70ch; */
   }
   .answerContainer {
@@ -395,6 +397,19 @@ body {
     position:relative;
     bottom: 4em;
     background: rgba(0,0,0,0);
+  }
+
+  #wizard {
+    max-height: 17vh;
+    position: fixed;
+    right: 0;
+    top:0;
+    background: rgba(0,0,0,0);
+  }
+  #affirmation {
+    position: fixed;
+    right: 17vh;
+    top:7vh;
   }
  
   [type="checkbox"].filled-in:checked+span:not(.lever):after{
