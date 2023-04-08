@@ -11,7 +11,7 @@ let userScore = 0;
 let userSelections = {};
 let gameBoardArray = [];
 let gameBoardText = [];
-let playerOnePosition = -1;
+let playerOnePosition = 0;
 let buttonClicked;
 
 let categoryMap = new Map([
@@ -88,14 +88,14 @@ function renderBoard() {
     gameBoardArray.length = 24;
     for (i = 0; i < gameBoardArray.length; i++) {
       gameBoardText[i] = ""; //reset all game board tiles to placeholder text
+      
     }
-    gameBoardText[currentGame.playerOnePosition] = "😊";
 
     //create two rows of 12
     var row1 = $("<div>");
     var row2 = $("<div>");
-    row1.addClass("row");
-    row2.addClass("row");
+    row1.addClass("row rowThin");
+    row2.addClass("row rowThin");
     gameBoard.append(row1);
     gameBoard.append(row2);
 
@@ -122,6 +122,9 @@ function renderBoard() {
     gameBoard.children().children()[23].textContent="FINISH";
     //TODO: maybe color the last tile rainbow somehow
 
+    //add 8-bit character to gameboard
+    gameBoard.children().children()[currentGame.playerOnePosition].innerHTML = "<img class='playerOneHero' src='../assets/images/hero.png'></img>";
+
   } else if (numberOfQuestions == 20) {
     //long board
 
@@ -130,11 +133,11 @@ function renderBoard() {
     while (gameBoardArray.length < 60) {
       gameBoardArray = gameBoardArray.concat(boardCategories);
     }
-    gameBoardArray.length = 60;
-    for (i = 0; i < gameBoardArray.length; i++) {
-      gameBoardText[i] = ""; //reset all game board tiles to placeholder text
-    }
-    gameBoardText[currentGame.playerOnePosition] = "😊";
+    // gameBoardArray.length = 60;
+    // for (i = 0; i < gameBoardArray.length; i++) {
+    //   gameBoardText[i] = ""; //reset all game board tiles to placeholder text
+    // }
+    //gameBoardText[currentGame.playerOnePosition] = "😊";
 
     //create five rows of 12
     var row1 = $("<div>");
@@ -201,6 +204,10 @@ function renderBoard() {
     //make the first tile say "START" and the last tile say "FINISH"
     gameBoard.children().children()[0].textContent="START";
     gameBoard.children().children()[59].textContent="FINISH";
+
+     //add 8-bit character to gameboard
+     gameBoard.children().children()[currentGame.playerOnePosition].innerHTML = "<img class='playerOneHero' src='../assets/images/hero.png'></img>";
+
   }
 }
 
@@ -277,6 +284,8 @@ function shuffleAnswers(answers) {
 function checkAnswer(userAnswer, category) {
   if (userAnswer === correctAnswer) { //the player answered correctly, so they advance or win the game
     
+    console.log("called checkAnswer");
+
     //This is important for tracking stats with the progress tracker
     currentGame.questionBank[currentGame.questionsAnswered].userCorrect =
       currentGame.questionBank[currentGame.questionsAnswered].category +
@@ -291,8 +300,12 @@ function checkAnswer(userAnswer, category) {
     ) {
       //get the category of the question just answered
       if (categoryMap.get(category) == gameBoardArray[i]) { //advance player One to next tile matching current category
+        console.log(gameBoardArray[i]);
         currentGame.playerOnePosition = i; //update player position based on the category of the current question
+        console.log(i);
+        console.log(currentGame.playerOnePosition);
         didPlayerAdvance = true; //there was space to advance, so the game is not over yet!
+        console.log("inside if statement");
         break;
       }
     }
