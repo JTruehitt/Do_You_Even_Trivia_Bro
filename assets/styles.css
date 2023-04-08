@@ -75,9 +75,12 @@ body {
   }
   
   .modal {
-    max-inline-size: 60ch;
+    /* //max-inline-size: 60ch; */
     border: 3px solid #ffff00;
+    max-height: 100% !important;
+    overflow-y: hidden;
   }
+
 
    /* * MODAL / Intake Form CSS END */
 
