@@ -128,6 +128,10 @@ body {
     padding-right: 1.5vw;
    }
 
+   .z-front {
+    z-index: 1;
+   }
+
    /*  */
 
    .resumeGameBtn {
@@ -151,6 +155,21 @@ body {
 
    .finale-title {
     background-color: transparent;
+   }
+
+   #finaleHero {
+    position:absolute;
+    left: 33vw;
+    top:56.5vh;
+    background: rgba(0,0,0,0);
+    height: 25vh;
+   }
+
+   #finaleWizard {
+    position:absolute;
+    right:0;
+    background: rgba(0,0,0,0);
+    height: 25vh;
    }
 
    .dynamic-message {
@@ -407,6 +426,7 @@ body {
     position:relative;
     bottom: 4em;
     background: rgba(0,0,0,0);
+    height:10vh;
   }
 
   #wizard {
