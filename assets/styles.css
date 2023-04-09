@@ -4,486 +4,505 @@
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: black;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: black;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
-  h1 {
-    text-align: center;
-  }
-  /* * MODAL / Intake Form CSS */
+main {
+  flex: 1 0 auto;
+}
+h1 {
+  text-align: center;
+}
+/* * MODAL / Intake Form CSS */
 
-  label {
-    display: block;
-  }
-  
-  .form-wrapper > * + * {
-    margin-block-start: 3em;
-  }
-  
-  .form-wrapper {
-    padding-inline: 6em;
-  }
-  
-  #landingHero {
-    height: 30vh;
-  }
-  .checkbox-wrapper {
-    /* padding-inline: 4em; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .checkbox-wrapper > * {
-    min-inline-size: 30ch;
-  }
-  
-  .selectAllBtn {
-    margin-block-end: 1em;
-    background-color: #ffff00;
-    color:black;
-  }
-  .selectAllBtn:hover{
-    background-color: var(--red);
-  }
+label {
+  display: block;
+}
 
-  .mainPageBtnWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
-    height: 10vh;
-    background-color: black;
-    
-  }
+.form-wrapper > * + * {
+  margin-block-start: 3em;
+}
 
-  .mainPageBtnWrapper > * {
-    min-inline-size: 30ch;
-    background-color: #ffff00;
-    color: black;
+.form-wrapper {
+  padding-inline: 6em;
+}
 
-  }
-  .mainPageBtnWrapper > *:hover{
-    background-color:var(--red);
-  }
-  
-  .modal {
-    /* //max-inline-size: 60ch; */
-    border: 3px solid #ffff00;
-    max-height: 100% !important;
-    overflow-y: hidden;
-  }
+#landingHero {
+  height: 30vh;
+}
+.checkbox-wrapper {
+  /* padding-inline: 4em; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.checkbox-wrapper > * {
+  min-inline-size: 30ch;
+}
 
-   /* * MODAL / Intake Form CSS END */
+.selectAllBtn {
+  margin-block-end: 1em;
+  background-color: #ffff00;
+  color: black;
+}
+.selectAllBtn:hover {
+  background-color: var(--red);
+}
 
-   /*Game Board Styling */
+.mainPageBtnWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: black;
+}
 
-   .arts_and_literature {
-      background-color:#bd8ff2; 
-   }
+.mainPageBtnWrapper > * {
+  min-inline-size: 30ch;
+  background-color: #ffff00;
+  color: black;
+}
+.mainPageBtnWrapper > *:hover {
+  background-color: var(--red);
+}
 
-   .film_and_tv {
-    background-color:#bf1313;
-   }
+.modal {
+  /* //max-inline-size: 60ch; */
+  border: 3px solid #ffff00;
+  max-height: 100% !important;
+  overflow-y: hidden;
+}
 
-   .food_and_drink {
-    background-color: #84cfbc;
-   }
+/* * MODAL / Intake Form CSS END */
 
-   .general_knowledge {
-    background-color: #e4db89;
-   }
+/*Game Board Styling */
 
-   .geography {
-    background-color: #0b4f0a ;
-   }
+.arts_and_literature {
+  background-color: #bd8ff2;
+}
 
-   .history {
-    background-color: #8a3f0e;
-   }
+.film_and_tv {
+  background-color: #bf1313;
+}
 
-   .music {
-    background-color: #cf6017;
-   }
+.food_and_drink {
+  background-color: #84cfbc;
+}
 
-   .science {
-    background-color: #6bfc3a;
-   }
+.general_knowledge {
+  background-color: #e4db89;
+}
 
-   .society_and_culture {
-    background-color: #e7bd6f;
-   }
+.geography {
+  background-color: #0b4f0a;
+}
 
-   .sport_and_leisure {
-    background-color: teal;
-   }
+.history {
+  background-color: #8a3f0e;
+}
 
-   .gameBoard {
-    padding-left: 1.5vw;
-    padding-right: 1.5vw;
-   }
+.music {
+  background-color: #cf6017;
+}
 
-   .z-front {
-    z-index: 1;
-   }
+.science {
+  background-color: #6bfc3a;
+}
 
-   /*  */
+.society_and_culture {
+  background-color: #e7bd6f;
+}
 
-   .resumeGameBtn {
-    display: none;
-   }
+.sport_and_leisure {
+  background-color: teal;
+}
 
-   /* Begin Finale Page Styling */
-   * {
-    background-color: var(--gold);
-    font-family: 'Press Start 2P';
-    color: white;
-   }
+.gameBoard {
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+}
 
-   .game-over {
-    background-image: url(../assets/images/yellow-brick-rd-finale.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 75vh;
-    width: 100vw;
-   }
+.z-front {
+  z-index: 1;
+}
 
-   .finale-title {
-    background-color: transparent;
-   }
+/*  */
 
-   #finaleHero {
-    position:absolute;
-    left: 33vw;
-    top:56.5vh;
-    background: rgba(0,0,0,0);
-    height: 25vh;
-   }
+.resumeGameBtn {
+  display: none;
+}
 
-   #finaleWizard {
-    position:absolute;
-    right:0;
-    background: rgba(0,0,0,0);
-    height: 25vh;
-   }
+/* Begin Finale Page Styling */
+* {
+  background-color: var(--gold);
+  font-family: "Press Start 2P";
+  color: white;
+}
 
-   .dynamic-message {
-    border-style: double;
-    border-width: 10px;
-    background-color: var(--red);
-    margin-bottom: 5px;
-   }
+.game-over {
+  background-image: url(../assets/images/yellow-brick-rd-finale.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 75vh;
+  width: 100vw;
+}
 
-   #user-message {
-    background-color: var(--red);
-    text-align: center;
-   }
+.finale-title {
+  background-color: transparent;
+}
 
-   .stats {
-    border-style: double;
-    border-width: 10px;
-    color: var(--red);
-    margin-bottom: 5px;
-   }
+#finaleHero {
+  position: absolute;
+  left: 33vw;
+  top: 56.5vh;
+  background: rgba(0, 0, 0, 0);
+  height: 25vh;
+}
 
-   .stats-title {
-    color: var(--red);
-    text-align: center;
-   }
+#finaleWizard {
+  position: absolute;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  height: 25vh;
+}
 
-   .restart-game {
-    border-style: double;
-    border-width: 10px;
-    background-color: var(--red);
-    margin-bottom: 5px;
-   }
+.dynamic-message {
+  border-style: double;
+  border-width: 10px;
+  background-color: var(--red);
+  margin-bottom: 5px;
+}
 
-    .restart-question {
-    background-color: var(--red);
-    text-align: center;
-    }
+#user-message {
+  background-color: var(--red);
+  text-align: center;
+}
 
-    .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--red);
-    }
+.stats {
+  border-style: double;
+  border-width: 10px;
+  color: var(--red);
+  margin-bottom: 5px;
+}
 
-    button {
-      font-family: 'Press Start 2P';
-    }
-    
-    .restart-btn {
-      margin-block-end: 1em;
-      background-color: var(--gold) !important;
-      color: var(--red) !important;
+.stats-title {
+  color: var(--red);
+  text-align: center;
+}
 
-    }
+.restart-game {
+  border-style: double;
+  border-width: 10px;
+  background-color: var(--red);
+  margin-bottom: 5px;
+}
 
-    .quit-btn {
-      margin-bottom: 15px;
-      background-color: var(--gold) !important;
-      color: var(--red) !important;
-    }
+.restart-question {
+  background-color: var(--red);
+  text-align: center;
+}
 
-   .stats-placeholder {
-    display: block;
-    height: 500px;
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 25px;
-   }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--red);
+}
 
-   .leaderboard {
-    border-style: double;
-    border-width: 10px;
-    color: var(--red);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   }
+button {
+  font-family: "Press Start 2P";
+}
 
-   .leader-title {
-    color: var(--red);
-    text-align: center;
-   }
+.restart-btn {
+  margin-block-end: 1em;
+  background-color: var(--gold) !important;
+  color: var(--red) !important;
+}
 
-   .categoryProgressWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   }
+.quit-btn {
+  margin-bottom: 15px;
+  background-color: var(--gold) !important;
+  color: var(--red) !important;
+}
 
-   .progressBarContainer {
-    outline: 1px solid white;
-    height: 2rem;
-    border-radius: 100vmax;
-    width: 100%;
-    margin-block-start: .25rem;
-    text-align: center;
-    position: relative;
-    display: flex;
-    /* justify-content: center; */
-  }
-  
-  .progressBarInner {
-    width: 0;
-    height: 2rem;
-    border-radius: 100vmax;
-  }
-  
-  .region {
-    margin-block: 1em;
-  }
-  
-  .categoryLabel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  span {
-    font-weight: bold;
-    /* font-size: 1.25rem; */
-  }
+.stats-placeholder {
+  display: block;
+  height: 500px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 25px;
+}
 
-  .stack {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .stack > * {
-    margin-block: 0;
-  }
-  
-  .stack > * + * {
-    margin-block-start: 1.5rem;
-  }
+.leaderboard {
+  border-style: double;
+  border-width: 10px;
+  color: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .categoryProgressDisplay {
-    min-inline-size: clamp(20ch, 80%, 55ch);
-  }
+.leader-title {
+  color: var(--red);
+  text-align: center;
+}
 
-  .categoryLabel {
-    padding-inline: 2em;
-  }
+.categoryProgressWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .levelUpDisplay {
-    justify-self: center;
-    align-self: center;
-    z-index: 2;
-    position: absolute;
-    background-color: transparent;
-    width: 100%;
-    
-  }
-   /* End Finale Page Styling */
+.progressBarContainer {
+  outline: 1px solid white;
+  height: 2rem;
+  border-radius: 100vmax;
+  width: 100%;
+  margin-block-start: 0.25rem;
+  text-align: center;
+  position: relative;
+  display: flex;
+  /* justify-content: center; */
+}
 
-   .wrapper {
-    padding-inline: 4em;
-    padding-block: 2em;
-    /* border: 3px solid; */
-    border-radius: 20px;
-  }
-  .centerQuiz {
-    box-sizing: content-box;
-    margin-inline: auto;
-    padding-top: 0px;
-    padding-left: 10vw;
-    padding-right:10vw;
-    /* max-inline-size: 70ch; */
-  }
-  .answerContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2em;
-    /* padding-inline: 2em; */
-    padding-block-start: 2em;
-  }
-  .answerContainer > * {
-    min-inline-size: 45%;
-    padding-block: 1.25em;
-    border-radius: 15px;
-    flex: 1 1;
-    transition: 250ms ease-in-out;
-    min-block-size: 17vh;
-    /* font-size: 5rem; */
-  }
-  .answerContainer > *:hover {
-    transform: scale(1.1);
-  }
-  .question{
-    font-size: 1.5em;
-    background-color: #ea0b0bff;
-  }
+.progressBarInner {
+  width: 0;
+  height: 2rem;
+  border-radius: 100vmax;
+}
+
+.region {
+  margin-block: 1em;
+}
+
+.categoryLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+span {
+  font-weight: bold;
+  /* font-size: 1.25rem; */
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: 1.5rem;
+}
+
+.categoryProgressDisplay {
+  min-inline-size: clamp(20ch, 80%, 55ch);
+}
+
+.categoryLabel {
+  padding-inline: 2em;
+}
+
+.levelUpDisplay {
+  justify-self: center;
+  align-self: center;
+  z-index: 2;
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+}
+/* End Finale Page Styling */
+
+.wrapper {
+  padding-inline: 4em;
+  padding-block: 2em;
+  /* border: 3px solid; */
+  border-radius: 20px;
+}
+.centerQuiz {
+  box-sizing: content-box;
+  margin-inline: auto;
+  padding-top: 0px;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  /* max-inline-size: 70ch; */
+}
+.answerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  /* padding-inline: 2em; */
+  padding-block-start: 2em;
+}
+.answerContainer > * {
+  min-inline-size: 45%;
+  padding-block: 1.25em;
+  border-radius: 15px;
+  flex: 1 1;
+  transition: 250ms ease-in-out;
+  min-block-size: 17vh;
+  /* font-size: 5rem; */
+}
+.answerContainer > *:hover {
+  transform: scale(1.1);
+}
+.question {
+  font-size: 1.5em;
+  background-color: #ea0b0bff;
+  padding-block: 0.5em;
+}
 
 .answerBtn {
-  font-family:'Press Start 2P';
+  font-family: "Press Start 2P";
   font-size: 1.5rem;
-  outline:2px solid yellow;
-  }
- 
-   .animatedheadline {
-    background-color: #ea0b0bff;
-    animation: fade-in 10s infinite;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    padding-top:3vh;
-    padding-bottom:2vh;
-  }
-  
-  @keyframes fade-in {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-      /* background-color: #ea0b0bff; */
-    }
-    50% {
-      transform: scale(1);
-      opacity: 0;
-      background-color: #f44336;
-    }
+  outline: 2px solid yellow;
+}
 
-  }
-  .sticky{
-    position: sticky;
-    bottom: 0px;
-    background-color: black;
-  }
-  #quizHeader{
-    background-color: black;
-  }
-  .quizPageHeader{
-    background-color: black;
-    color: #ffff00;
-  }
-  .tile{
-    height: 4vh;
-    text-align: center; 
-    line-height: 4vh;
-  }
+.animatedheadline {
+  background-color: #ea0b0bff;
+  animation: fade-in 10s infinite;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 3vh;
+  padding-bottom: 2vh;
+}
 
-  .tileThin{
-    height: 2.5vh;
-    text-align: center;
-    line-height: 2.5vh;
+@keyframes fade-in {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    /* background-color: #ea0b0bff; */
   }
+  50% {
+    transform: scale(1);
+    opacity: 0;
+    background-color: #f44336;
+  }
+}
+.sticky {
+  position: sticky;
+  bottom: 0px;
+  background-color: black;
+}
+#quizHeader {
+  background-color: black;
+}
+.quizPageHeader {
+  background-color: black;
+  color: #ffff00;
+}
+.tile {
+  height: 4vh;
+  text-align: center;
+  line-height: 4vh;
+}
 
-  .rowThin {
-    margin-bottom: 10px !important;
-  }
+.tileThin {
+  height: 2.5vh;
+  text-align: center;
+  line-height: 2.5vh;
+}
 
-  .playerOneHero {
-    position:relative;
-    bottom: 4em;
-    background: rgba(0,0,0,0);
-    height:10vh;
-  }
+.rowThin {
+  margin-bottom: 10px !important;
+}
 
-  #wizard {
-    max-height: 17vh;
-    position: fixed;
-    right: 0;
-    top:0;
-    background: rgba(0,0,0,0);
-  }
-  #affirmation {
-    position: fixed;
-    right: 17vh;
-    top:7vh;
-  }
- 
-  [type="checkbox"].filled-in:checked+span:not(.lever):after{
-    background-color:var(--red);
-    border: 1px solid #ffff00;
-  }
-  .submitUserSelectionsBtn,
-  .proceedWithNewGameBtn {
-    background-color:#ffff00;
-    color:black;
-  }
-  .submitUserSelectionsBtn:hover,
-  .proceedWithNewGameBtn:hover,
-  .proceedWithNewGameBtn:focus,
-  .startGameBtn:focus,
-  .resumeGameBtn:focus,
-  .selectAllBtn:focus,
-  .submitUserSelectionsBtn:focus,
-  .modal-close:active {
-    background-color:var(--red);
-  }
+.playerOneHero {
+  position: relative;
+  bottom: 4em;
+  background: rgba(0, 0, 0, 0);
+  height: 10vh;
+}
 
-  select {
-    background-color: #ffff00;
-    color: black;
-    font-family: inherit;
-  }
+#wizard {
+  max-height: 17vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0);
+}
+#affirmation {
+  position: fixed;
+  right: 17vh;
+  top: 7vh;
+}
 
-  .stats-display {
-    display: flex;
-    flex-direction: column;
-    max-inline-size: 55ch;
-  }
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+  background-color: var(--red);
+  border: 1px solid #ffff00;
+}
+.submitUserSelectionsBtn,
+.proceedWithNewGameBtn {
+  background-color: #ffff00;
+  color: black;
+}
+.submitUserSelectionsBtn:hover,
+.proceedWithNewGameBtn:hover,
+.proceedWithNewGameBtn:focus,
+.startGameBtn:focus,
+.resumeGameBtn:focus,
+.selectAllBtn:focus,
+.submitUserSelectionsBtn:focus,
+.modal-close:active {
+  background-color: var(--red);
+}
 
-  .correctAnswer {
-    border: 5px solid green;
-    outline: 5px solid green;
-  }
+select {
+  background-color: #ffff00;
+  color: black;
+  font-family: inherit;
+}
 
-  .wrongAnswer {
-    border: 5px solid red;
-    outline: 5px solid red;
-    opacity: 75%;
-  }
+.stats-display {
+  display: flex;
+  flex-direction: column;
+  max-inline-size: 55ch;
+}
+
+.correctAnswer {
+  inset: 5px solid green;
+  outline: 5px solid green;
+}
+
+.wrongAnswer {
+  inset: 5px solid red;
+  outline: 5px solid red;
+  opacity: 75%;
+}
+
+.mainFooter p {
+  max-inline-size: 60ch;
+  text-align: center;
+  padding-inline: 1em;
+}
+
+.mainFooter {
+  display: flex;
+  justify-content: center;
+  margin-block-end: 2em;
+}
+
+.restart-btn {
+  outline: 3px solid #ffff00;
+}
+
+.category-header {
+  padding-block: 0.5em;
+}
+
+.leaderboard {
+  padding-block: 0.5em;
+}
