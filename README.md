@@ -7,10 +7,15 @@
 ## Deployed Application
 "Do You Even Trivia, Bro?" is available here: https://jtruehitt.github.io/Group_8_Project_1/.
 
-## APIs used:
-
-- The Trivia API. Docs: https://the-trivia-api.com/docs/
-- GIPHY API. Docs: https://developers.giphy.com/docs/api/#quick-start-guide
+## Technologies Used:
+- HTML
+- CSS
+- JavaScript
+- Materialize CSS
+- jQuery
+- Google Fonts
+- The Trivia API - Docs: https://the-trivia-api.com/docs/
+- GIPHY API - Docs: https://developers.giphy.com/docs/api/#quick-start-guide
 
 Screenshots of Deployed App:
 
