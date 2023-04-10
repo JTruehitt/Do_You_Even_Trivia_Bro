@@ -74,14 +74,10 @@ function getCurrentGame() {
 
 // parses out the data passed from the currentGame object to determine number of correct/incorrect questions per difficulty per category and sets the appropriate question count and exp value into the main storage.
 function parseAnswers(currentGame, categoryProgressStorage) {
-  console.log(currentGame);
-  console.log(categoryProgressStorage);
   for (let i = 0; i < currentGame.questionBank.length; i++) {
     if (currentGame.questionBank[i].userCorrect) {
       let cat = currentGame.questionBank[i].userCorrect.split("+")[0];
-      console.log(cat);
       let diff = currentGame.questionBank[i].userCorrect.split("+")[1];
-      console.log(diff);
       for (let j = 0; j < categoryProgressStorage.length; j++) {
         if (diff == "easy" && cat === categoryProgressStorage[j].category) {
           categoryProgressStorage[j].exp += 10;
