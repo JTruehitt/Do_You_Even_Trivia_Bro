@@ -60,7 +60,6 @@ function queryTAPI() {
       }
     })
     .then((data) => {
-      console.log(data);
       currentGame.questionBank = data;
       renderNextQuestion(data, currentGame.questionsAnswered);
     });
@@ -323,7 +322,6 @@ function checkAnswer(userAnswer, category) {
       }, 3000);
     }
     if (currentGame.playerOnePosition == gameBoardArray.length - 1) {  //if the player lands exactly on the last tile, they win...delete this?
-      console.log("Landed exactly on the last tile!");
       setTimeout(function () {
         endGame(true);
       }, 3000);
@@ -422,7 +420,6 @@ function loadPreviousGame() {
   let gameInProgress = localStorage.getItem("gameInProgress");
   if (gameInProgress) {
     currentGame = JSON.parse(localStorage.getItem("currentGame"));
-    console.log(currentGame);
     renderNextQuestion(currentGame.questionBank, currentGame.questionsAnswered);
   } else {
     queryTAPI();

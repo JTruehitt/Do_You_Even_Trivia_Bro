@@ -27,7 +27,7 @@ label {
 }
 
 .form-wrapper {
-  padding-inline: 6em;
+  /* padding-inline: 6em; */
 }
 
 #landingHero {
@@ -73,14 +73,13 @@ label {
 }
 
 .modal {
-  /* //max-inline-size: 60ch; */
+  max-inline-size: 50ch;
   border: 3px solid #ffff00;
-  max-height: 100% !important;
-  overflow-y: initial !important;
+  max-height: 80vh !important;
+  /* overflow-y: initial !important; */
 }
 
 .modal-content {
-  height: 80vh;
   overflow-y: auto;
 }
 
@@ -510,4 +509,8 @@ select {
 
 .leaderboard {
   padding-block: 0.5em;
+}
+
+.mainPageSubtitle {
+  padding-inline: 2em;
 }
