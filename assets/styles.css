@@ -153,7 +153,7 @@ label {
   background-image: url(../assets/images/yellow-brick-rd-finale.jpg);
   background-size: cover;
   background-position: center;
-  height: 75vh;
+  height: 95vh;
   width: 100vw;
 }
 
@@ -163,8 +163,8 @@ label {
 
 #finaleHero {
   position: absolute;
-  left: 33vw;
-  top: 56.5vh;
+  left: 43vw;
+  top: 66.5vh;
   background: rgba(0, 0, 0, 0);
   height: 25vh;
 }
