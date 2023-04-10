@@ -76,7 +76,12 @@ label {
   /* //max-inline-size: 60ch; */
   border: 3px solid #ffff00;
   max-height: 100% !important;
-  overflow-y: hidden;
+  overflow-y: initial !important;
+}
+
+.modal-content {
+  height: 80vh;
+  overflow-y: auto;
 }
 
 /* * MODAL / Intake Form CSS END */
