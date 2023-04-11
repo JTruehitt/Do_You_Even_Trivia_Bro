@@ -5,7 +5,7 @@
 "Do You Even Trivia, Bro?" is a goofy trivia game for people looking to relax and have a good time. With the ability to select different categories, difficulty level, and game length, each user can create their own experience and have fun. Playng a few rounds has proven to be a nice break after a coding session!
 
 ## Deployed Application
-"Do You Even Trivia, Bro?" is available here: https://jtruehitt.github.io/Group_8_Project_1/.
+"Do You Even Trivia, Bro?" is available here: https://jtruehitt.github.io/Do_You_Even_Trivia_Bro/
 
 ## Technologies Used:
 - HTML
